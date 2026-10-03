@@ -98,19 +98,21 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 1
+Current Active Phase: PHASE 2
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: None
+Last Approved Phase: PHASE 1
 
 Last Updated By Codex: Codex
 
 Last Update:
-- Phase 1 foundation completed and awaiting user review.
+- Phase 1 approved by the user.
+- Phase 2 brand design system completed and awaiting user review.
 
 User Review Notes:
-- None yet.
+- User confirmed Phase 1 was completed and requested implementation of Phase 2.
+- Phase 2 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -129,7 +131,7 @@ BLOCKED
 PHASE 1 — PROJECT FOUNDATION + DEPLOYMENT BASELINE
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Create a clean, maintainable website foundation and verify that the project can
@@ -187,7 +189,7 @@ Do not start Phase 2 until user approves Phase 1.
 PHASE 2 — BRAND DESIGN SYSTEM + RESPONSIVE UI FOUNDATION
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Establish the final visual language before building major pages.
@@ -1079,12 +1081,25 @@ Format:
 - Static route, asset, 404, formatting and repository secret-pattern checks passed. Node was unavailable in the local environment, so the Node build/test commands and live GitHub Pages deployment remain for user verification.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 1 Approval
+- User confirmed Phase 1 was completed and instructed Codex to proceed to Phase 2.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 2
+- Added a reusable Peacock Blue, warm Ivory, Soft White, Charcoal and restrained Gold visual system with fluid typography, spacing and layout tokens.
+- Added reusable button, link, card, image-frame, CTA, form, section, container, header, footer and responsive helper styles.
+- Refined shared navigation with an availability CTA, accessible mobile menu state, Escape-key close behavior and reusable footer navigation.
+- Added subtle reveal and image-hover motion with reduced-motion fallbacks.
+- Reworked the temporary home page into a clearly labelled design-system review surface without beginning Phase 3 homepage content.
+- Static verification and production build passed; browser preview was skipped at the user's request.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 1 — PROJECT FOUNDATION + DEPLOYMENT BASELINE
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1152,6 +1167,68 @@ Instructions for user review:
 
 User requested changes:
 - None yet
+
+User approval:
+APPROVED — user confirmed Phase 1 was completed and requested Phase 2 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 2 — BRAND DESIGN SYSTEM + RESPONSIVE UI FOUNDATION
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Defined the complete brand colour, type, spacing, sizing, border, shadow and motion token set.
+- Added responsive utility classes and reusable UI treatments for sections, containers, buttons, text links, cards, image frames, CTAs and form fields.
+- Applied the brand system to the shared header, navigation, mobile menu and footer.
+- Added subtle reveal and image-zoom behaviors with reduced-motion support.
+- Added a temporary design-system review surface to the home route.
+
+Files modified:
+- index.html
+- style.css
+- app.js
+- scripts/build.mjs
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Kept the dependency-free static architecture established in Phase 1.
+- Used system serif and sans-serif font stacks to avoid render-blocking font downloads.
+- Kept Phase 2 content intentionally demonstrative; final homepage content remains deferred to Phase 3.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- Responsive CSS breakpoint and overflow-oriented source checks.
+- Keyboard navigation, focus-visible and reduced-motion source checks.
+- Phase 1 route/navigation regression checks.
+
+Test results:
+- PASS: Seven page shells retain responsive viewport, shared assets and skip links.
+- PASS: All navigation routes remain present.
+- PASS: Brand tokens and reusable component classes are present.
+- PASS: Mobile menu state, Escape-key close behavior, visible focus and reduced-motion handling are present.
+- PASS: Production build generated the deployable dist directory.
+- NOT RUN: Browser screenshot review, skipped when the user requested direct publication for live review.
+
+Known issues / limitations:
+- The design-system page uses intentional placeholders; production photography is deferred to later approved phases.
+- The preview form is non-submitting by design; the enquiry workflow is deferred to Phase 9.
+
+Instructions for user review:
+1. Review the live home page on phone and desktop.
+2. Check Peacock Blue/Ivory balance, editorial heading style, body readability, spacing, buttons, cards and form treatment.
+3. Open and close the mobile menu, navigate the existing routes and confirm the footer treatment.
+4. Approve Phase 2 or list requested visual changes.
 
 User approval:
 PENDING

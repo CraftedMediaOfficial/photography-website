@@ -16,7 +16,7 @@ async function copy(source, destination) {
 }
 
 async function build() {
-  try { await fs.rmdir(output, { recursive: true }); } catch (error) { if (error.code !== "ENOENT") throw error; }
+  try { await fs.rm(output, { recursive: true }); } catch (error) { if (error.code !== "ENOENT") throw error; }
   await fs.mkdir(output, { recursive: true });
   for (const entry of await fs.readdir(root)) if (!excluded.has(entry)) await copy(join(root, entry), join(output, entry));
   console.log("Static production site built in dist/");
