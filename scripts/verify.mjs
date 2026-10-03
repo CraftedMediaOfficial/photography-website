@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
+import { portfolioCategories, publishedPortfolioCategories } from "../data/portfolio-data.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -37,6 +38,20 @@ async function verify() {
   for (const field of ["founder", "team", "name", "role", "description"]) if (!aboutData.includes(field)) throw new Error(`Structured About data is missing ${field}.`);
   const portrait = await fs.stat(resolve(root, "assets/images/photographer-placeholder.webp"));
   if (portrait.size > 500_000) throw new Error("The Phase 4 portrait placeholder exceeds the image budget.");
-  console.log(`Verified ${pages.length} responsive pages, Phase 3 homepage, Phase 4 About content/data, optimized imagery, keyboard focus and reduced-motion support.`);
+  const expectedCategories = ["weddings", "pre-weddings", "cultural-family-events", "corporate-events", "sports-events", "product-photography", "food-photography", "kids-photography"];
+  const publishedSlugs = publishedPortfolioCategories.map((category) => category.slug);
+  if (JSON.stringify(publishedSlugs) !== JSON.stringify(expectedCategories)) throw new Error("Published portfolio category order is incorrect.");
+  if (new Set(portfolioCategories.map((category) => category.slug)).size !== portfolioCategories.length) throw new Error("Portfolio category slugs must be unique.");
+  for (const category of portfolioCategories) {
+    for (const field of ["name", "slug", "description", "displayOrder", "visibility", "albums"]) if (!(field in category)) throw new Error(`Portfolio category ${category.slug} is missing ${field}.`);
+  }
+  if (!portfolioCategories.some((category) => category.visibility === "hidden")) throw new Error("Portfolio data must represent hidden-category behavior.");
+  for (const slug of expectedCategories) {
+    const page = await fs.readFile(resolve(root, `portfolio/${slug}/index.html`), "utf8");
+    if (!page.includes(`data-category-slug="${slug}"`) || !page.includes("portfolio.js")) throw new Error(`Generated portfolio page ${slug} is invalid.`);
+  }
+  const portfolioScript = await fs.readFile(resolve(root, "portfolio/portfolio.js"), "utf8");
+  for (const behavior of ["publishedPortfolioCategories", "renderInvalidCategory", "data-album-count"]) if (!portfolioScript.includes(behavior)) throw new Error(`Portfolio behavior ${behavior} is missing.`);
+  console.log(`Verified ${pages.length} responsive pages, Phase 3 homepage, Phase 4 About, ${expectedCategories.length} Phase 5 portfolio routes, visibility/order logic, accessibility and optimized imagery.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });

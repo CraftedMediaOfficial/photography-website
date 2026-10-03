@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 4
+Current Active Phase: PHASE 5
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 3
+Last Approved Phase: PHASE 4
 
 Last Updated By Codex: Codex
 
@@ -110,13 +110,15 @@ Last Update:
 - Phase 1 approved by the user.
 - Phase 2 brand design system approved by the user.
 - Phase 3 homepage approved by the user.
-- Phase 4 About, photographer, team and brand-story experience completed and awaiting user review.
+- Phase 4 About, photographer, team and brand-story experience approved by the user.
+- Phase 5 data-driven portfolio architecture and category experience completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
 - User approved Phase 2 and requested Phase 3 implementation and live deployment.
 - User approved Phase 3 and requested Phase 4 implementation and live deployment.
-- Phase 4 must be reviewed on the live website before approval.
+- User approved Phase 4 and requested Phase 5 implementation and live deployment.
+- Phase 5 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -317,7 +319,7 @@ Homepage structure must be approved before detailed portfolio implementation.
 PHASE 4 — ABOUT + PHOTOGRAPHER + TEAM + BRAND STORY
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Build trust and show the people behind Crafted Media.
@@ -380,7 +382,7 @@ User reviews the wording, portraits, brand personality and trust factor.
 PHASE 5 — PORTFOLIO ARCHITECTURE + CATEGORY EXPERIENCE
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Create a scalable, data-driven public portfolio architecture.
@@ -1122,6 +1124,17 @@ Format:
 - Static verification and production build passed.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 4 Approval
+- User approved the live Phase 4 About and brand-story experience and requested Phase 5.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 5
+- Rebuilt the Portfolio route around one structured category data source and generated eight individual category routes.
+- Added configurable ordering and visibility, a shared category renderer, responsive editorial covers, category navigation, safe invalid-category handling and honest empty album states.
+- Kept album galleries explicitly deferred to Phase 6 and used typographic covers where approved photography has not been supplied.
+- Portfolio architecture, accessibility regression, generated-route and production build checks passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1339,7 +1352,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 4 — ABOUT + PHOTOGRAPHER + TEAM + BRAND STORY
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1393,6 +1406,81 @@ Instructions for user review:
 2. Confirm the company story, philosophy, six style principles and five-step client experience.
 3. Review the founder and team layouts, then supply the real names, biographies and portraits when available.
 4. Approve Phase 4 or list the required content/visual changes.
+
+User approval:
+APPROVED — user approved Phase 4 and requested Phase 5 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 5 — PORTFOLIO ARCHITECTURE + CATEGORY EXPERIENCE
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Rebuilt /portfolio as a premium, responsive category-led experience.
+- Added Weddings, Pre-Weddings, Cultural & Family Events, Corporate Events, Sports Events, Product Photography, Food Photography and Kids Photography.
+- Added eight individual category routes with shared navigation and honest album empty states.
+- Added safe handling for unavailable categories and a conversion CTA on every portfolio view.
+
+Files added:
+- data/portfolio-data.mjs
+- portfolio/portfolio.js
+- scripts/generate-portfolio-pages.mjs
+- portfolio/.generated-pages.json
+- Eight generated portfolio category index pages.
+
+Files modified:
+- portfolio/index.html
+- package.json
+- scripts/build.mjs
+- scripts/verify.mjs
+- style.css
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Category name, slug, description, cover, order, visibility and albums live in one structured data source.
+- Published categories are filtered and sorted without category-specific rendering logic.
+- Build-time generation creates crawlable GitHub Pages routes while one client-side module renders the shared experience.
+- A hidden future category validates that unpublished work does not appear publicly.
+
+Tests executed:
+- Portfolio page generator.
+- Node static verification suite.
+- Production build.
+- Category order, required-field, unique-slug, hidden-category, route-generation, accessibility and existing-page regression checks.
+
+Test results:
+- PASS: Eight published categories render in the configured order.
+- PASS: Hidden categories are excluded from public navigation and generated routes.
+- PASS: All eight category URLs are generated with the shared renderer.
+- PASS: Invalid category state is handled safely.
+- PASS: Production build generated the complete deployable dist directory.
+- PASS: Existing responsive pages, navigation, accessibility and optimized-image checks remain intact.
+
+Known issues / limitations:
+- Albums and image galleries are intentionally empty until Phase 6.
+- Weddings and Pre-Weddings reuse the approved temporary editorial covers; the other categories use branded typographic covers until client photography is supplied.
+- Browser screenshot automation is unavailable in the execution sandbox; source-level responsive and accessibility checks passed.
+
+Items intentionally deferred:
+- Album architecture, image galleries, lightbox behavior and album imagery belong to Phase 6.
+
+Instructions for user review:
+1. Open the live Portfolio page on phone and desktop.
+2. Review the category order, cover treatment and horizontal category navigation.
+3. Open each category and confirm its description and empty album state.
+4. Approve Phase 5 or list the required content or visual changes.
+
+User requested changes:
+- None yet.
 
 User approval:
 PENDING
