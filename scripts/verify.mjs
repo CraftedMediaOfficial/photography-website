@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { portfolioCategories, publishedPortfolioCategories } from "../data/portfolio-data.mjs";
 import { portfolioAlbums, publishedPortfolioAlbums } from "../data/portfolio-albums.mjs";
+import { films, publishedFilms } from "../data/films.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -77,6 +78,26 @@ async function verify() {
     const details = await fs.stat(resolve(root, `assets/images/gallery/${image}`));
     if (details.size > 500_000) throw new Error(`${image} exceeds the Phase 6 gallery image budget.`);
   }
-  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 album/gallery routing, lightbox controls, swipe and keyboard behavior, lazy responsive images, private visibility and 32-image stress data.`);
+  const filmPage = await fs.readFile(resolve(root, "films/index.html"), "utf8");
+  for (const marker of ["films-hero", "film-showreel", "data-showreel", "controls", "playsinline", 'preload="metadata"', "data-video-fallback", "data-film-list", "film-approach", "data-film-dialog"]) if (!filmPage.includes(marker)) throw new Error(`Phase 7 Films page is missing ${marker}.`);
+  if (filmPage.includes("autoplay")) throw new Error("Phase 7 film playback must not autoplay.");
+  if (!home.includes('href="films/"') || !home.includes("Watch our films")) throw new Error("Homepage showreel CTA is missing.");
+  const allowedFilmHosts = new Set(["youtube.com", "www.youtube.com", "youtu.be", "instagram.com", "www.instagram.com", "vimeo.com", "www.vimeo.com", "www.youtube-nocookie.com", "player.vimeo.com"]);
+  for (const film of films) {
+    for (const field of ["title", "type", "thumbnail", "description", "destinationUrl", "displayOrder", "visibility"]) if (!(field in film)) throw new Error(`Film item ${film.title} is missing ${field}.`);
+    await fs.access(resolve(root, film.thumbnail));
+    for (const value of [film.destinationUrl, film.embedUrl].filter(Boolean)) {
+      const url = new URL(value);
+      if (url.protocol !== "https:" || !allowedFilmHosts.has(url.hostname)) throw new Error(`Film item ${film.title} has an unsafe external URL.`);
+    }
+  }
+  if (!films.some((film) => film.visibility === "hidden")) throw new Error("Film data must represent hidden-film behavior.");
+  if (publishedFilms.some((film) => film.visibility !== "published") || publishedFilms.length !== 4) throw new Error("Film visibility filtering is incorrect.");
+  if (JSON.stringify(publishedFilms.map((film) => film.displayOrder)) !== JSON.stringify([1, 2, 3, 4])) throw new Error("Published film ordering is incorrect.");
+  const filmScript = await fs.readFile(resolve(root, "films/films.js"), "utf8");
+  for (const behavior of ["safeUrl", "allowedExternalHosts", "allowedEmbedHosts", "noopener noreferrer", "target = \"_blank\"", "showModal", "data-video-fallback", "about:blank"]) if (!filmScript.includes(behavior)) throw new Error(`Film behavior ${behavior} is missing.`);
+  const video = await fs.stat(resolve(root, "assets/videos/editorial-motion-study.mp4"));
+  if (video.size > 2_000_000) throw new Error("Phase 7 motion study exceeds the lightweight video budget.");
+  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 galleries and Phase 7 film data, safe playback/link behavior, no autoplay, lightweight video and unavailable-media fallback.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });

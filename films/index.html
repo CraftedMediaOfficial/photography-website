@@ -1,1 +1,72 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Crafted Media films." /><title>Crafted Media | Films</title><link rel="stylesheet" href="../style.css" /><script src="../app.js" defer></script></head><body data-page="films" data-base="../"><a class="skip-link" href="#main-content">Skip to content</a><main id="main-content" tabindex="-1"><section class="placeholder" aria-labelledby="page-title"><p class="eyebrow">Films</p><h1 id="page-title">Moving stories, coming soon</h1><p>Crafted Media film highlights and showreels will live here.</p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore Crafted Media wedding films, event highlights, brand stories and cinematic motion work." />
+    <title>Films &amp; Cinematography | Crafted Media</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../app.js" defer></script>
+    <script type="module" src="films.js"></script>
+  </head>
+  <body data-page="films" data-base="../">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content" tabindex="-1">
+      <section class="films-hero section--peacock" aria-labelledby="films-page-title">
+        <div class="container films-hero__inner" data-reveal>
+          <p class="eyebrow">Crafted Media films</p>
+          <h1 id="films-page-title">Stories that move with intention.</h1>
+          <p>Wedding films, event highlights and brand stories shaped around real voices, considered sound and the rhythm already present in the moment.</p>
+        </div>
+      </section>
+
+      <section class="film-showreel section--white" id="showreel" aria-labelledby="showreel-title">
+        <div class="container-wide">
+          <div class="film-showreel__heading" data-reveal>
+            <div><p class="eyebrow">Motion study</p><h2 id="showreel-title">Movement before volume.</h2></div>
+            <p>This silent editorial study demonstrates the intended film presentation without claiming unpublished footage as client work.</p>
+          </div>
+          <div class="film-player" data-reveal>
+            <video data-showreel controls playsinline preload="metadata" poster="../assets/images/gallery/mandap-at-dusk-1536.webp">
+              <source src="../assets/videos/editorial-motion-study.mp4" type="video/mp4" />
+              Your browser does not support HTML video. The full film link will be added when approved footage is supplied.
+            </video>
+            <div class="film-player__fallback" data-video-fallback hidden><p>Video preview unavailable.</p><p>The presentation remains ready for an approved YouTube, Vimeo or local film source.</p></div>
+          </div>
+          <p class="film-showreel__note">Illustrative imagery · 10 seconds · Silent · Playback starts only when selected</p>
+        </div>
+      </section>
+
+      <section class="section section--ivory film-library" aria-labelledby="film-library-title">
+        <div class="container">
+          <div class="film-library__heading" data-reveal>
+            <div><p class="eyebrow">Film collections</p><h2 id="film-library-title">From a full story to its shortest cut.</h2></div>
+            <p>The same visual care adapts to wedding films, couple stories, event highlights, brand films, product videos and platform-ready reels.</p>
+          </div>
+          <div class="film-grid" data-film-list aria-live="polite"><p>Film previews are loading.</p></div>
+          <noscript><p>Enable JavaScript to view the structured film collection.</p></noscript>
+        </div>
+      </section>
+
+      <section class="section section--white film-approach" aria-labelledby="film-approach-title">
+        <div class="container">
+          <div class="section-heading" data-reveal><p class="eyebrow">Our film approach</p><h2 id="film-approach-title">Natural direction. Deliberate rhythm.</h2></div>
+          <ol class="film-approach__list">
+            <li data-reveal><span>01</span><div><h3>Listen first</h3><p>We understand the people, purpose and pace before deciding how the film should move.</p></div></li>
+            <li data-reveal><span>02</span><div><h3>Capture lightly</h3><p>Small, coordinated crews preserve natural sound and movement without turning the day into a set.</p></div></li>
+            <li data-reveal><span>03</span><div><h3>Edit for feeling</h3><p>Picture, voice, music and silence are shaped into a film with clarity and emotional continuity.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section section--ivory" aria-label="Film enquiry">
+        <div class="container"><div class="cta" data-reveal><div><p class="eyebrow">Planning a film?</p><h2>Tell us what should remain in motion.</h2><p>Share the story, date, location and the kind of final film you need.</p></div><a class="button button--light" href="../contact/">Discuss your film</a></div></div>
+      </section>
+    </main>
+
+    <dialog class="film-dialog" data-film-dialog aria-labelledby="film-dialog-title">
+      <div class="film-dialog__header"><h2 id="film-dialog-title" data-film-dialog-title>Film</h2><button type="button" data-film-dialog-close aria-label="Close film player">Close</button></div>
+      <div class="film-dialog__frame"><iframe src="about:blank" title="Film" loading="lazy" allow="fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    </dialog>
+  </body>
+</html>

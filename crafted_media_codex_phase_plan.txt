@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 6
+Current Active Phase: PHASE 7
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 5
+Last Approved Phase: PHASE 6
 
 Last Updated By Codex: Codex
 
@@ -112,7 +112,8 @@ Last Update:
 - Phase 3 homepage approved by the user.
 - Phase 4 About, photographer, team and brand-story experience approved by the user.
 - Phase 5 data-driven portfolio architecture and category experience approved by the user.
-- Phase 6 album architecture and premium gallery experience completed and awaiting user review.
+- Phase 6 album architecture, premium gallery experience and mobile corrections approved by the user.
+- Phase 7 films and cinematography experience completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -120,7 +121,8 @@ User Review Notes:
 - User approved Phase 3 and requested Phase 4 implementation and live deployment.
 - User approved Phase 4 and requested Phase 5 implementation and live deployment.
 - User approved Phase 5 and requested Phase 6 implementation and live deployment.
-- Phase 6 must be reviewed on the live website before approval.
+- User approved Phase 6 and requested Phase 7 implementation and live deployment.
+- Phase 7 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -447,7 +449,7 @@ User reviews category organization and visual presentation.
 PHASE 6 — ALBUMS + PREMIUM PHOTO GALLERY EXPERIENCE
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Create the core photography viewing experience.
@@ -505,7 +507,7 @@ User reviews photo presentation and gallery usability.
 PHASE 7 — FILMS / CINEMATOGRAPHY EXPERIENCE
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Give cinematography equal importance without slowing the website.
@@ -1156,6 +1158,18 @@ Format:
 - Added 320px, 390px and 430px browser checks across all eight category pages.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 6 Approval
+- User approved the live Phase 6 gallery experience and mobile corrections and requested Phase 7.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 7
+- Replaced the Films placeholder with a complete cinematography experience and lightweight inline motion study.
+- Added structured film data, visibility/order handling, four public film collection cards and a hidden-film fixture.
+- Added safe YouTube, Instagram and Vimeo URL validation, secure external-link behavior, optional embed dialog support and graceful unavailable-video states.
+- Added a 10-second silent H.264 motion study under 1 MB with click-only controls, mobile playback and no autoplay.
+- Film data, playback, link safety, unavailable-media, mobile/desktop browser and production build checks passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1516,7 +1530,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 6 — ALBUMS + PREMIUM PHOTO GALLERY EXPERIENCE
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1569,7 +1583,7 @@ Test results:
 Known issues / limitations:
 - The public story uses explicitly illustrative editorial images because approved client albums have not been supplied.
 - Client names, real dates, locations and album photography must replace the demonstration content after owner approval.
-- Browser automation is unavailable in the execution sandbox; interaction behavior is covered by dependency-free source checks and manual live review remains required.
+- Browser checks confirmed category and album containment at 320px, 390px and 430px after the mobile review correction.
 
 Items intentionally deferred:
 - Real client portfolio ingestion and additional albums require approved content.
@@ -1584,6 +1598,85 @@ Instructions for user review:
 User requested changes:
 - Make category pages fit naturally on mobile without zooming and enlarge the small category controls.
 - Implemented a contained, readable two-column mobile category selector and corrected oversized album-image behavior.
+
+User approval:
+APPROVED — user approved Phase 6 and requested Phase 7 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 7 — FILMS / CINEMATOGRAPHY EXPERIENCE
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Replaced the Films placeholder with a complete mobile-first cinematography page.
+- Added a prominent click-to-play editorial motion study with native playback controls and no autoplay.
+- Added structured presentations for a showreel study, wedding films, event and brand stories, and short-form reels.
+- Added a three-step film approach covering discovery, capture and editing.
+- Added an enquiry CTA dedicated to cinematography projects.
+- Added graceful local-video failure behavior plus safe future YouTube, Instagram and Vimeo destinations and embeds.
+
+Files added:
+- assets/videos/editorial-motion-study.mp4
+- data/films.mjs
+- films/films.js
+
+Files modified:
+- films/index.html
+- style.css
+- scripts/serve.mjs
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Film title, type, thumbnail, description, video/destination/embed sources, duration, display order and visibility live in structured data.
+- Only published films render; a hidden fixture verifies private-film filtering.
+- External URLs are restricted to HTTPS YouTube, Instagram and Vimeo hosts and open with secure isolation attributes.
+- Embeds load only after a user action and are removed when the dialog closes; no film autoplays.
+- The initial reel is explicitly labelled an illustrative, silent motion study because approved client film footage and channel links have not been supplied.
+- The local H.264/YUV420P reel is 10 seconds and under 1 MB, keeping the demonstration lightweight and broadly playable.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- Film-field, order, visibility, safe-link, embed, unavailable-media, no-autoplay and video-budget checks.
+- Headless Chromium checks at 320px, 390px and 1280px.
+- Real H.264 metadata decoding and playback check.
+
+Test results:
+- PASS: Four published film collections render in configured order; hidden content is excluded.
+- PASS: Film page includes controls, playsinline behavior, metadata-only preload and no autoplay.
+- PASS: The 1280×720 motion study decodes and plays at all tested viewport widths.
+- PASS: Mobile and desktop pages remain within the viewport with no horizontal overflow.
+- PASS: Safe external-link and optional privacy-conscious embed behavior are implemented.
+- PASS: Graceful unavailable-video and pending-film states are present.
+- PASS: Production build and earlier-phase regressions completed successfully.
+
+Known issues / limitations:
+- Approved Crafted Media cinematography, client film titles and external channel URLs have not been supplied.
+- The motion study uses illustrative still imagery and is intentionally silent; it must not be mistaken for a finished client film.
+
+Items intentionally deferred:
+- Replacing the demonstration with real showreel footage and live channel links requires approved source material.
+- Services and trust content belong to Phase 8.
+
+Instructions for user review:
+1. Open the live Films page on phone and desktop.
+2. Play, pause, seek and enter fullscreen on the editorial motion study.
+3. Review the four film collection presentations and unavailable-link language.
+4. Confirm the film approach and cinematography enquiry CTA.
+5. Approve Phase 7 or list the required film/content changes.
+
+User requested changes:
+- None yet.
 
 User approval:
 PENDING
