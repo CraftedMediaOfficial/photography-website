@@ -1,10 +1,15 @@
-[
-  "weddings",
-  "pre-weddings",
-  "cultural-family-events",
-  "corporate-events",
-  "sports-events",
-  "product-photography",
-  "food-photography",
-  "kids-photography"
-]
+{
+  "categories": [
+    "weddings",
+    "pre-weddings",
+    "cultural-family-events",
+    "corporate-events",
+    "sports-events",
+    "product-photography",
+    "food-photography",
+    "kids-photography"
+  ],
+  "albums": [
+    "weddings/before-the-celebration"
+  ]
+}

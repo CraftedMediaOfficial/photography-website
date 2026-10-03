@@ -6,7 +6,7 @@ export const portfolioCategories = [
     coverImage: "assets/images/home-hero.webp",
     displayOrder: 1,
     visibility: "published",
-    albums: []
+    albums: ["before-the-celebration"]
   },
   {
     name: "Pre-Weddings",

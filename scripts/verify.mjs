@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { portfolioCategories, publishedPortfolioCategories } from "../data/portfolio-data.mjs";
+import { portfolioAlbums, publishedPortfolioAlbums } from "../data/portfolio-albums.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -51,7 +52,30 @@ async function verify() {
     if (!page.includes(`data-category-slug="${slug}"`) || !page.includes("portfolio.js")) throw new Error(`Generated portfolio page ${slug} is invalid.`);
   }
   const portfolioScript = await fs.readFile(resolve(root, "portfolio/portfolio.js"), "utf8");
-  for (const behavior of ["publishedPortfolioCategories", "renderInvalidCategory", "data-album-count"]) if (!portfolioScript.includes(behavior)) throw new Error(`Portfolio behavior ${behavior} is missing.`);
-  console.log(`Verified ${pages.length} responsive pages, Phase 3 homepage, Phase 4 About, ${expectedCategories.length} Phase 5 portfolio routes, visibility/order logic, accessibility and optimized imagery.`);
+  for (const behavior of ["publishedPortfolioCategories", "renderInvalidCategory", "data-album-count", "getPublishedAlbumsForCategory", "album-card"]) if (!portfolioScript.includes(behavior)) throw new Error(`Portfolio behavior ${behavior} is missing.`);
+  for (const album of portfolioAlbums) {
+    for (const field of ["name", "slug", "category", "coverImage", "description", "date", "location", "photos", "videos", "visibility", "displayOrder"]) if (!(field in album)) throw new Error(`Portfolio album ${album.slug} is missing ${field}.`);
+    if (!publishedPortfolioCategories.some((category) => category.slug === album.category)) throw new Error(`Album ${album.slug} references an unavailable category.`);
+  }
+  if (publishedPortfolioAlbums.length !== 1 || publishedPortfolioAlbums[0].slug !== "before-the-celebration") throw new Error("Only the approved Phase 6 demonstration album should be published.");
+  const stressAlbum = portfolioAlbums.find((album) => album.slug === "gallery-stress-test");
+  if (!stressAlbum || stressAlbum.photos.length < 30 || stressAlbum.visibility !== "draft") throw new Error("The private 30+ image gallery stress fixture is invalid.");
+  for (const slug of ["gallery-stress-test", "hidden-story"]) {
+    try { await fs.access(resolve(root, `portfolio/weddings/${slug}/index.html`)); throw new Error(`${slug} must not be publicly generated.`); }
+    catch (error) { if (error.code !== "ENOENT") throw error; }
+  }
+  const albumPage = await fs.readFile(resolve(root, "portfolio/weddings/before-the-celebration/index.html"), "utf8");
+  for (const marker of ["data-album-slug", "data-gallery", "data-lightbox", "data-lightbox-previous", "data-lightbox-next", "data-lightbox-close", "gallery.js"]) if (!albumPage.includes(marker)) throw new Error(`Generated album page is missing ${marker}.`);
+  const galleryScript = await fs.readFile(resolve(root, "portfolio/gallery.js"), "utf8");
+  for (const behavior of ["showModal", "closeLightbox", "ArrowLeft", "ArrowRight", "Escape", "touchstart", "touchend", "loading", "srcset", "imageSourceSet", "markImageFailure", "data-thumbnail-index"]) if (!galleryScript.includes(behavior)) throw new Error(`Gallery behavior ${behavior} is missing.`);
+  for (const photo of publishedPortfolioAlbums[0].photos) {
+    if (!photo.srcSet || !photo.width || !photo.height || !photo.alt || !photo.layout) throw new Error(`Gallery photo ${photo.src} lacks responsive or aspect-ratio data.`);
+    await fs.access(resolve(root, photo.src));
+  }
+  for (const image of ["ceremony-details-1536.webp", "courtyard-arrival-1122.webp", "mandap-at-dusk-1536.webp"]) {
+    const details = await fs.stat(resolve(root, `assets/images/gallery/${image}`));
+    if (details.size > 500_000) throw new Error(`${image} exceeds the Phase 6 gallery image budget.`);
+  }
+  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 album/gallery routing, lightbox controls, swipe and keyboard behavior, lazy responsive images, private visibility and 32-image stress data.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });

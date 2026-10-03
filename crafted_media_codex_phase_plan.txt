@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 5
+Current Active Phase: PHASE 6
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 4
+Last Approved Phase: PHASE 5
 
 Last Updated By Codex: Codex
 
@@ -111,14 +111,16 @@ Last Update:
 - Phase 2 brand design system approved by the user.
 - Phase 3 homepage approved by the user.
 - Phase 4 About, photographer, team and brand-story experience approved by the user.
-- Phase 5 data-driven portfolio architecture and category experience completed and awaiting user review.
+- Phase 5 data-driven portfolio architecture and category experience approved by the user.
+- Phase 6 album architecture and premium gallery experience completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
 - User approved Phase 2 and requested Phase 3 implementation and live deployment.
 - User approved Phase 3 and requested Phase 4 implementation and live deployment.
 - User approved Phase 4 and requested Phase 5 implementation and live deployment.
-- Phase 5 must be reviewed on the live website before approval.
+- User approved Phase 5 and requested Phase 6 implementation and live deployment.
+- Phase 6 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -382,7 +384,7 @@ User reviews the wording, portraits, brand personality and trust factor.
 PHASE 5 — PORTFOLIO ARCHITECTURE + CATEGORY EXPERIENCE
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Create a scalable, data-driven public portfolio architecture.
@@ -445,7 +447,7 @@ User reviews category organization and visual presentation.
 PHASE 6 — ALBUMS + PREMIUM PHOTO GALLERY EXPERIENCE
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Create the core photography viewing experience.
@@ -1135,6 +1137,18 @@ Format:
 - Portfolio architecture, accessibility regression, generated-route and production build checks passed.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 5 Approval
+- User approved the live Phase 5 portfolio architecture and requested Phase 6.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 6
+- Added a structured album model with published, draft and hidden visibility states and build-generated album routes.
+- Added a curated editorial gallery with five responsive demonstration images, varied narrative layouts and lazy loading.
+- Added a fullscreen viewer with previous/next controls, keyboard navigation, mobile swipe, thumbnails, close/focus restoration and image-failure states.
+- Added a private 32-image stress fixture and verified that draft and hidden albums do not generate public pages.
+- Album generation, gallery behavior, responsive-image, visibility, accessibility regression and production build checks passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1420,7 +1434,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 5 — PORTFOLIO ARCHITECTURE + CATEGORY EXPERIENCE
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1466,7 +1480,7 @@ Test results:
 - PASS: Existing responsive pages, navigation, accessibility and optimized-image checks remain intact.
 
 Known issues / limitations:
-- Albums and image galleries are intentionally empty until Phase 6.
+- Album and gallery support was added in Phase 6.
 - Weddings and Pre-Weddings reuse the approved temporary editorial covers; the other categories use branded typographic covers until client photography is supplied.
 - Browser screenshot automation is unavailable in the execution sandbox; source-level responsive and accessibility checks passed.
 
@@ -1478,6 +1492,87 @@ Instructions for user review:
 2. Review the category order, cover treatment and horizontal category navigation.
 3. Open each category and confirm its description and empty album state.
 4. Approve Phase 5 or list the required content or visual changes.
+
+User requested changes:
+- None yet.
+
+User approval:
+APPROVED — user approved Phase 5 and requested Phase 6 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 6 — ALBUMS + PREMIUM PHOTO GALLERY EXPERIENCE
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Added a data-driven album/story model with name, category, cover, description, date, location, photos, optional videos, visibility and display order.
+- Added a published Weddings editorial demonstration called “Before the Celebration.”
+- Added a curated five-frame narrative gallery with wide, standard and portrait pacing.
+- Added a fullscreen lightbox with previous/next buttons, thumbnails, keyboard controls, Escape close, mobile swipe and focus restoration.
+- Added responsive image candidates, intrinsic dimensions, lazy loading and graceful image-failure states.
+- Added automatic generation of public album routes while preventing draft and hidden routes from being created.
+
+Files added:
+- data/portfolio-albums.mjs
+- portfolio/gallery.js
+- portfolio/weddings/before-the-celebration/index.html
+- Eight optimized responsive WebP gallery assets.
+
+Files modified:
+- data/portfolio-data.mjs
+- portfolio/portfolio.js
+- portfolio/.generated-pages.json
+- Eight generated portfolio category pages.
+- scripts/generate-portfolio-pages.mjs
+- scripts/verify.mjs
+- style.css
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Album content is centralized and filtered by visibility before route generation or rendering.
+- Category pages query published albums rather than containing album-specific markup.
+- The gallery renderer uses one shared module for any future album and preserves each photograph’s order, caption, aspect ratio and layout intent.
+- The initial public gallery is explicitly labelled an editorial demonstration so fictional client identities or events are not presented as real work.
+- A draft 32-image fixture exercises gallery scale without exposing test content publicly.
+
+Tests executed:
+- Portfolio and album page generator.
+- Node static verification suite.
+- Production build.
+- Album-field, visibility, route-generation, lightbox control, keyboard, swipe, lazy-loading, responsive-source, aspect-ratio, image-presence and 32-image stress checks.
+
+Test results:
+- PASS: Eight category pages and one published album route generated.
+- PASS: Draft and hidden albums have no public route.
+- PASS: Gallery open/close, previous/next, Escape and arrow-key behaviors are implemented.
+- PASS: Touch swipe and thumbnail navigation are implemented.
+- PASS: Gallery images provide responsive sources, dimensions, alt text, lazy loading and failure handling.
+- PASS: All new full-resolution WebP files remain below the 500 KB image budget.
+- PASS: Production build and previous-phase regressions completed successfully.
+
+Known issues / limitations:
+- The public story uses explicitly illustrative editorial images because approved client albums have not been supplied.
+- Client names, real dates, locations and album photography must replace the demonstration content after owner approval.
+- Browser automation is unavailable in the execution sandbox; interaction behavior is covered by dependency-free source checks and manual live review remains required.
+
+Items intentionally deferred:
+- Real client portfolio ingestion and additional albums require approved content.
+- Video-first cinematography belongs to Phase 7.
+
+Instructions for user review:
+1. Open Weddings, then select “Before the Celebration.”
+2. Review the gallery pacing on phone and desktop.
+3. Open a photograph and test Previous, Next, thumbnails, arrow keys, Escape and mobile swipe.
+4. Approve Phase 6 or list the required gallery/content changes.
 
 User requested changes:
 - None yet.

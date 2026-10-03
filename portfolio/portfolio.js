@@ -1,4 +1,5 @@
 import { publishedPortfolioCategories } from "../data/portfolio-data.mjs";
+import { getPublishedAlbumsForCategory } from "../data/portfolio-albums.mjs";
 
 const base = document.body.dataset.base || "../";
 const list = document.querySelector("[data-portfolio-list]");
@@ -101,10 +102,39 @@ function renderDetail() {
   });
   categoryNavigation.replaceChildren(navigationFragment);
 
+  const albums = getPublishedAlbumsForCategory(slug);
   const albumCount = document.querySelector("[data-album-count]");
-  albumCount.textContent = category.albums.length
-    ? `${category.albums.length} ${category.albums.length === 1 ? "story" : "stories"}`
-    : "Albums arrive in Phase 6";
+  albumCount.textContent = `${albums.length} ${albums.length === 1 ? "story" : "stories"}`;
+  const albumList = document.querySelector("[data-album-list]");
+  const albumEmpty = document.querySelector("[data-album-empty]");
+  albumEmpty.hidden = albums.length > 0;
+  const albumFragment = document.createDocumentFragment();
+  albums.forEach((album) => {
+    const card = document.createElement("a");
+    card.className = "album-card";
+    card.href = `./${album.slug}/`;
+    const image = document.createElement("img");
+    image.src = `${base}${album.coverImage}`;
+    image.alt = "";
+    image.width = 1536;
+    image.height = 1024;
+    image.loading = "lazy";
+    const content = document.createElement("span");
+    content.className = "album-card__content";
+    const meta = document.createElement("span");
+    meta.className = "album-card__meta";
+    meta.textContent = `${album.dateLabel} · ${album.location}`;
+    const name = document.createElement("span");
+    name.className = "album-card__title";
+    name.textContent = album.name;
+    const description = document.createElement("span");
+    description.className = "album-card__description";
+    description.textContent = album.description;
+    content.append(meta, name, description);
+    card.append(image, content);
+    albumFragment.append(card);
+  });
+  albumList.replaceChildren(albumFragment);
 }
 
 renderListing();
