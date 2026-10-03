@@ -1,10 +1,25 @@
-import { cp, mkdir, readdir, rm } from "node:fs/promises";
+import { promises as fs } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = resolve(root, "dist");
-await rm(output, { recursive: true, force: true });
-await mkdir(output, { recursive: true });
 const excluded = new Set([".git", ".github", ".openai", "dist", "node_modules"]);
-for (const entry of await readdir(root)) if (!excluded.has(entry)) await cp(join(root, entry), join(output, entry), { recursive: true });
-console.log("Static production site built in dist/");
+
+async function copy(source, destination) {
+  const details = await fs.stat(source);
+  if (details.isDirectory()) {
+    await fs.mkdir(destination, { recursive: true });
+    for (const entry of await fs.readdir(source)) await copy(join(source, entry), join(destination, entry));
+    return;
+  }
+  await fs.copyFile(source, destination);
+}
+
+async function build() {
+  try { await fs.rmdir(output, { recursive: true }); } catch (error) { if (error.code !== "ENOENT") throw error; }
+  await fs.mkdir(output, { recursive: true });
+  for (const entry of await fs.readdir(root)) if (!excluded.has(entry)) await copy(join(root, entry), join(output, entry));
+  console.log("Static production site built in dist/");
+}
+
+build().catch((error) => { console.error(error); process.exitCode = 1; });
