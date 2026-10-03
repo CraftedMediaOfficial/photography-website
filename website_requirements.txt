@@ -1,0 +1,693 @@
+Absolutely. I went through both handwritten pages and expanded them into a proper website requirements / design brief that you can directly give to your website designer or developer.
+The overall goal should be: the website should not feel like a generic photography portfolio. It should feel premium, cinematic, artistic, emotional, and trustworthy — something that makes a potential client imagine themselves being photographed by the brand.
+Photography & Cinematography Website — Detailed Requirement Brief
+1. Overall Vision
+We are building a premium website for a Photography & Cinematography company/brand.
+The website should showcase our work in a visually impressive way while also converting visitors into enquiries.
+The primary objectives are:
+- Showcase our best photography and cinematography work.
+- Introduce the photographer/company and team.
+- Clearly show the different services we provide.
+- Make it very easy for visitors to contact us.
+- Allow visitors to submit their event date, city, event type and approximate budget through a poll of different budget range.
+- Give the website owner/admin the ability to manage portfolio photographs without needing a developer every time.
+- Keep the overall appearance elegant, premium and artistic.
+- Make the website feel professional enough for weddings, premium personal events, brands and corporate clients.
+The website must work exceptionally well on mobile phones, because most clients will probably discover the business through Instagram, WhatsApp or referrals and open the website from their phone.
+2. Visual Style / Colour Theme
+The main website colour theme should revolve around:
+Peacock Blue + Cream / Ivory
+The colours should feel premium rather than overly colourful.
+For example:
+- Deep Peacock Blue — main brand colour
+- Cream / Ivory — background
+- White — content sections
+- Dark charcoal — text
+- Optional subtle gold/beige accents for luxury feel
+The website should use plenty of whitespace.
+Avoid making the site look crowded.
+Photography must remain the main visual element and easily scrollable for customers to review as portfolio
+Animations should be suble incase used 
+Typography should combine something handwritten/ curvy/cursive elegant/editorial for headings with a very readable font for normal text.
+The feeling should be:
+Elegant + Artistic + Cinematic + Modern + Warm + Premium
+3. Homepage
+The homepage is extremely important.
+Within a few seconds, the visitor should understand:
+Who we are → What we shoot → Our style → Why they should choose us → How they can contact us.
+Hero Section
+The first screen should contain one exceptional photograph or a cinematic visual.
+Potential layout:
+[Brand/Studio Name]
+Short emotional statement such as:
+Stories. Emotions. Moments preserved forever.
+
+or
+Photography & Films crafted around your story.
+
+Below that:
+Photography | Cinematography | Weddings | Events | Brands
+Two buttons:
+View Our Work
+Check Availability
+Alternatively, the hero can contain a short muted cinematic video/showreel.
+It should NOT autoplay with loud audio.
+4. Homepage Introduction
+After the hero section, introduce:
+The Company
+Short explanation about:
+- who we are
+- what type of photography we specialise in
+- our philosophy
+- how we approach photography/cinematography
+- what makes our work different
+This should not sound like a corporate company profile.
+Instead, it should communicate things such as:
+- capturing real emotions
+- natural storytelling
+- cinematic compositions
+- making clients comfortable
+- documenting meaningful moments rather than just taking photographs
+5. Photographer / Founder Introduction
+There should be a dedicated section introducing the main photographer.
+Include:
+- Photographer name
+- Professional portrait
+- Short personal story
+- Photography journey
+- Creative philosophy
+- What kind of moments they love capturing
+The goal is for clients to feel:
+"I know who will be photographing us."
+
+Photography is a very personal service, especially weddings and family events, so showing the person behind the camera builds trust.
+6. Team Introduction
+If there are photographers, videographers, editors or assistants working with the company, include a team section.
+Each team member can have:
+- Photo
+- Name
+- Role
+- One-line description
+For example:
+Photographer
+Cinematographer
+Film Editor
+Creative Director
+Keep this simple and elegant.
+7. Main Portfolio / Categories
+The website must have a main Portfolio / Our Work section.
+The current primary categories should be:
+1. Wedding Photography & Films
+This should probably be one of the strongest sections.
+Possible subcategories later:
+- Wedding
+- Reception
+- Engagement
+- Haldi
+- Mehendi
+- Sangeet
+- Bridal Portraits
+- Couple Portraits
+Wedding pages should feel emotional and cinematic
+2. Pre-Wedding
+Dedicated portfolio showcasing:
+- Couple portraits
+- Outdoor shoots
+- Destination pre-weddings
+- Conceptual pre-weddings
+- Cinematic pre-wedding films
+It would be good if individual shoots could eventually have their own small story/album.
+Example:
+Ananya & Rahul — Coorg
+Then show around 15–30 carefully selected photographs.
+8. Cultural & Family Events
+Create a broader category for important family and traditional events.
+Current requirements include:
+- Housewarming
+- Baby Shower
+- Baby Naming Ceremony
+- Thread Ceremony
+More events can easily be added later.
+The website structure should therefore allow new subcategories without redesigning the website.
+Possible future additions:
+- Engagement
+- Anniversary
+- Birthday
+- Traditional Ceremonies
+- Family Celebrations
+9. Corporate Events
+Dedicated portfolio for corporate clients.
+Examples:
+- Conferences
+- Company events
+- Award ceremonies
+- Product launches
+- Office events
+- Corporate gatherings
+- Team events
+This page should look slightly more professional/business-oriented while maintaining the overall brand identity.
+10. Sports Events
+Separate photography category for:
+- Sports tournaments
+- Running events
+- Corporate sports events
+- School/college sports
+- Action photography
+The gallery should emphasise movement, energy and action.
+11. Product Photography
+Dedicated product photography portfolio.
+Possible sections:
+- Ecommerce product photography
+- Lifestyle product photography
+- Creative product photography
+- Advertising photography
+This page will be particularly useful for brands and businesses.
+12. Food Photography
+Separate portfolio for:
+- Restaurants and Brewery
+- Cafes
+- Food brands
+- Menu photography
+- Commercial food photography
+Food photography should preferably use a different gallery layout where larger images are given more space.
+13. Kids Photography
+Portfolio for:
+- Kids portraits
+- Birthday photography
+- Family photography
+- Candid photography
+- Children events
+The visual presentation can feel slightly warmer/playful while still staying within the main brand design.
+14. Categories That May Be Added Later
+The website architecture MUST allow additional categories in the future.
+Currently planned future categories include:
+Creative Portraits
+Experimental/artistic portrait photography.
+Conceptual Shoots
+Creative storytelling or themed shoots.
+Brand Shoots
+Photography and video specifically created for businesses, brands and creators.
+Other categories that could eventually be added:
+- Fashion Photography
+- Maternity Photography
+- Family Portraits
+- Interior Photography
+- Commercial Campaigns
+- Personal Branding
+- Influencer/Creator Content
+- Travel Photography
+The website should therefore NOT hard-code only the initial categories.
+15. Portfolio Gallery Experience
+This part is extremely important.
+Photos should be displayed beautifully, not like files inside folders but more of like a scrolldown pdf but any dimension like portrait or landscape should look in continuity.
+Possible layouts:
+- Masonry galleries
+- Full-width photographs
+- Editorial magazine-style layouts
+- Horizontal cinematic galleries
+- Fullscreen image viewing
+When a visitor clicks a photo, it should open larger.
+Users should be able to navigate:
+Previous ← Photo → Next
+Preferably with swipe gestures on mobile.
+Images should load progressively so that hundreds of portfolio images don't make the site slow.
+16. Admin / Portfolio Management
+The website owner should NOT need to contact the developer every time photographs need to be changed.
+There should eventually be a simple admin/content-management system.
+The owner should be able to:
+- Add photos
+- Remove photos
+- Replace photos
+- Move photos between categories
+- Create new categories
+- Create new albums
+- Rename albums
+- Reorder photos
+- Reorder categories
+- Hide/show albums
+- Hide/show categories
+- Choose the cover photo of an album
+- Choose which work appears on homepage
+For example:
+Wedding
+→ Priya & Arjun
+→ Sneha & Rohit
+→ Ananya & Rahul
+The owner should be able to rearrange these albums.
+17. Display / Hide Function
+One handwritten requirement specifically mentioned:
+Display / Hide Folder
+This should be implemented properly.
+For example, an admin may have a wedding gallery prepared but may not want it visible yet.
+Status options could be:
+Published
+Hidden
+Draft
+This gives much better control over what appears publicly.
+18. Reordering Portfolio
+The owner should have control over presentation order.
+For example:
+Wedding
+Pre-Wedding
+Cultural Events
+Corporate
+Product
+Food
+Kids
+Could later be changed to:
+Wedding
+Pre-Wedding
+Brand
+Product
+Corporate
+Food
+without changing website code.
+Similarly, individual photos should be reorderable.
+Ideally this should work using drag-and-drop.
+19. Cinematography / Films Section
+Photography and cinematography should be treated equally.
+Create a dedicated:
+Films / Cinematography
+section.
+Types of videos could include:
+- Wedding Film
+- Wedding Highlight
+- Pre-Wedding Film
+- Couple Film
+- Event Highlight
+- Brand Film
+- Corporate Film
+- Product Video
+- Reels
+Instead of hosting massive video files directly on the website, we can use attractive video thumbnails.
+When clicked, the video can:
+- play embedded
+- open YouTube
+- open Instagram
+depending on where the video is hosted.
+The handwritten requirement specifically mentions:
+Video thumbnail/photo that redirects to Instagram/YouTube.
+Keep this ability.
+20. Cinematic Showreel
+One additional feature that could strongly impress clients is a short:
+Showreel
+Approximately 30–60 seconds.
+It can contain the strongest cinematic moments from:
+- weddings
+- pre-weddings
+- events
+- brands
+This can appear on the homepage.
+A good showreel immediately tells clients the quality of the cinematography.
+21. Featured Stories
+Instead of only having galleries, create a few Featured Stories.
+For example:
+Aditi & Karan
+A colourful Bengaluru wedding
+Then show a carefully curated sequence:
+Getting ready → Ceremony → Family → Couple → Reception.
+This makes the portfolio feel much more premium because visitors experience a story instead of just seeing random photographs.
+22. Testimonials / Client Stories
+A photography business should have testimonials.
+Include a section such as:
+Kind Words From Our Clients
+Each testimonial could include:
+- Couple/client name
+- Small photograph
+- Review
+- Event type
+If available, Google reviews could eventually be linked.
+This builds significant trust.
+23. Instagram Integration
+Instagram is extremely important for photography.
+The website should prominently link to Instagram.
+Possible homepage section:
+Follow Our Stories
+Show 6–9 recent Instagram photographs/reels.
+However, don't overload the website with social-media widgets that slow it down.
+A clean preview with a:
+View Instagram
+button is enough.
+24. Contact Information
+Contact information should be easy to find.
+Required contact methods:
+Phone
+Tap should directly call.
+WhatsApp
+Tap should open WhatsApp with a pre-filled message.
+Example:
+Hi, I found you through your website. I'd like to enquire about photography for my event.
+
+Instagram
+Direct link to Instagram profile.
+Email
+Professional business email address.
+25. Enquiry / Booking Form
+This is one of the most important features.
+Instead of clients simply writing:
+"Photography price?"
+
+the website should gather useful information.
+The enquiry form should contain:
+Name
+Phone / WhatsApp Number
+Email
+Event Type
+Example options:
+- Wedding
+- Pre-Wedding
+- Engagement
+- Cultural Event
+- Corporate
+- Product
+- Food
+- Kids
+- Brand Shoot
+- Other
+Event Date
+City / Location
+Approximate Budget
+Potential ranges:
+₹25k–₹50k
+₹50k–₹1L
+₹1L–₹2L
+₹2L–₹5L
+₹5L+
+Let's Discuss
+Photography / Cinematography requirement
+Photography
+Cinematography
+Both
+And finally:
+Tell us about your event / vision
+26. WhatsApp Conversion
+After submitting the enquiry, the visitor could see:
+Thank you! We'll get back to you shortly.
+
+And another button:
+Continue on WhatsApp
+This can dramatically reduce lost enquiries.
+27. Availability CTA
+Throughout the site, instead of repeatedly saying:
+Contact Us
+use stronger photography-specific calls to action:
+Check Your Date
+Tell Us Your Story
+Plan Your Shoot
+Let's Create Something Beautiful
+Check Availability
+These feel more premium and personal.
+28. Services Page
+Create a dedicated page explaining what we offer.
+For example:
+Photography
+Wedding Photography
+Event Photography
+Portrait Photography
+Commercial Photography
+Cinematography
+Wedding Films
+Event Films
+Brand Films
+Reels / Social Content
+Explain each briefly.
+Avoid huge text sections.
+Photography should remain the focus.
+29. Packages
+I would not necessarily publish every package price immediately.
+Premium photography websites often use:
+Packages starting from ₹XX,XXX
+or
+Custom packages available
+with:
+Request Pricing
+This allows the photographer to understand the client before quoting.
+Later, if desired, packages could be shown for services such as:
+- Pre-wedding
+- Baby shower
+- Housewarming
+- Product shoots
+30. FAQ
+Add a FAQ section because clients repeatedly ask similar questions.
+Examples:
+How early should we book?
+Do you travel outside Bengaluru?
+Do you provide both photography and cinematography?
+How long does delivery take?
+Do you provide raw photographs?
+How many edited photographs will we receive?
+Do you create wedding albums?
+Do you shoot destination weddings?
+How does booking confirmation work?
+This reduces repetitive WhatsApp conversations.
+31. Locations / Destination Shoots
+If travel photography/weddings are available, mention:
+Available across Bengaluru, India & Destination Events
+Later the website can have separate pages for major markets if the business expands.
+For example:
+Bengaluru Wedding Photographer
+Goa Wedding Photographer
+Coorg Pre-Wedding Photographer
+This also helps with Google search visibility.
+32. Client Experience Section
+Another addition I strongly recommend is explaining the experience.
+For example:
+Step 01 — Tell Us Your Story
+Submit date, location and requirements.
+Step 02 — Let's Talk
+Discuss ideas, expectations and style.
+Step 03 — Planning
+Locations, timeline, shot planning etc.
+Step 04 — Shoot Day
+We capture everything naturally.
+Step 05 — Editing & Delivery
+Careful colour grading, editing and final delivery.
+This makes the company appear organised and professional.
+33. Photography Style Section
+Clients should understand the brand's visual style.
+For example:
+Candid
+Natural
+Editorial
+Cinematic
+Emotional
+Timeless
+A short paragraph can explain the philosophy.
+This also helps attract the correct type of client rather than everyone.
+34. Featured Work on Homepage
+Do not show every category immediately.
+The homepage should show only the strongest work.
+Perhaps:
+Featured Weddings
+Pre-Wedding Stories
+Cinematic Films
+Brand Work
+Then:
+Explore Full Portfolio
+This creates curiosity.
+35. Premium Image Presentation
+Avoid tiny image grids containing 20 photos simultaneously.
+Use fewer but larger photographs.
+A photographer's website should resemble a premium magazine.
+Some photographs should occupy:
+- full screen
+- half screen
+- asymmetric editorial layouts
+This makes photographs feel much more valuable.
+36. Mobile Experience
+The website MUST be designed mobile-first.
+Important because most traffic will likely come from:
+Instagram → Website
+WhatsApp → Website
+Google → Website
+Mobile requirements:
+- Fast loading
+- Easy swipe galleries
+- Large buttons
+- Sticky WhatsApp button
+- Easy enquiry form
+- No tiny text
+- No awkward menus
+37. Website Performance
+Photography websites easily become extremely slow because images are huge.
+The developer must implement:
+- automatic image compression
+- WebP/AVIF images
+- multiple image sizes
+- lazy loading
+- thumbnail generation
+- CDN/image optimisation if required
+We should be able to eventually have hundreds of photographs (500+ images) without making the website painfully slow.
+This is especially important for mobile users.
+38. SEO / Google Search
+The website should be built properly for Google.
+Pages should contain proper:
+- Titles
+- Meta descriptions
+- Image alt text
+- Sitemap
+- OpenGraph metadata
+- Structured data
+- Clean URLs
+For example:
+/weddings
+/pre-wedding
+/corporate
+/product-photography
+rather than random URLs.
+This could eventually help the business rank for searches such as:
+Wedding photographer Bengaluru
+Pre wedding photographer Bangalore
+Wedding cinematographer Bangalore
+etc.
+39. Google Business Integration
+The website should link to the company's Google Business Profile.
+Eventually:
+Google reviews → Website
+Website → Google Maps/Profile
+This gives new clients another trust signal.
+40. Analytics
+We should be able to understand how visitors use the website.
+Install analytics so we can see:
+- Number of visitors
+- Which portfolio gets the most attention
+- Where visitors come from
+- Instagram traffic
+- Google traffic
+- Number of enquiry submissions
+- WhatsApp clicks
+Google Analytics or another privacy-friendly analytics tool can be used.
+41. Social Sharing
+When someone shares a page on WhatsApp, it should show a beautiful preview image.
+For example:
+Crafted Media — Wedding Photography & Cinematography
+with a strong photograph.
+Not a random website screenshot or blank box.
+42. Brand Consistency
+The website, Instagram and final client communication should eventually feel like one brand.
+The designer should define:
+- Main colours
+- Secondary colours
+- Heading typography
+- Body typography
+- Button styling
+- Photography presentation
+- Logo treatment
+- Icon style
+- Spacing rules
+This creates a recognisable visual identity.
+43. Suggested Website Navigation
+I would keep the main navigation simple:
+Home | About | Portfolio | Films | Services | Contact
+Under Portfolio:
+Weddings
+Pre-Weddings
+Cultural Events
+Corporate
+Sports
+Product
+Food
+Kids
+Additional categories can be added later.
+The top right can contain a strong button:
+Check Availability
+44. Suggested Homepage Flow
+I would recommend designing the homepage approximately like this:
+Hero Photograph / Cinematic Video
+↓
+Short Brand Introduction
+↓
+Featured Wedding Story
+↓
+Selected Portfolio Categories
+↓
+Cinematic Showreel
+↓
+Meet the Photographer
+↓
+Our Approach / Client Experience
+↓
+Testimonials
+↓
+Instagram Preview
+↓
+"Let's Create Something Together"
+↓
+Enquiry Form
+↓
+Contact / WhatsApp / Instagram
+This creates a natural journey from:
+Emotion → Portfolio → Trust → Contact.
+45. Admin Requirements
+From an owner perspective, eventually we should be able to manage:
+- Photos
+- Videos
+- Categories
+- Albums
+- Portfolio ordering
+- Homepage featured photos
+- Testimonials
+- About section
+- Team
+- Contact information
+- Instagram/YouTube links
+- Hidden/published galleries
+without changing source code.
+For every gallery ideally we should have:
+Gallery Name
+Category
+Cover Image
+Description
+Date
+Location
+Photos
+Videos
+Visibility: Draft / Published / Hidden
+Display Order
+ONLY MARKETING WEBSITE
+47. One Important Principle for the Designer
+The website should never compete with the photographs.
+Avoid:
+- excessive animation
+- extremely colourful backgrounds
+- complicated UI
+- dozens of buttons
+- clutter
+- giant blocks of text
+- unnecessary effects
+Every design decision should make the photography look better.
+The desired reaction when someone opens the website should be:
+"Wow. I want my photos to look like this."
+
+rather than:
+"Wow, that's a fancy website."
+
+48. Final Business Goal
+The website is ultimately not just a portfolio.
+It should work as a premium lead-generation tool.
+The ideal visitor journey is:
+Instagram / Google / Recommendation
+↓
+Beautiful Homepage
+↓
+Sees Work Relevant to Their Event
+↓
+Looks at Full Story / Film
+↓
+Reads About Photographer
+↓
+Sees Reviews
+↓
+Feels Trust
+↓
+Checks Date
+↓
+Submits Date + City + Budget + Requirement
+↓
+Moves Conversation to WhatsApp
+That is the experience we should design around.
+A one-line direction for the designer
+You can give your designer this sentence as the core design philosophy:
+"Create a premium, modern and cinematic photography experience using peacock blue and cream, where large emotional photographs and films dominate the design. The site should feel like an editorial luxury portfolio rather than a standard business website, while quietly guiding visitors toward checking availability and contacting us."
+
+And one more thing I'd prioritise heavily for Crafted Media: don't launch with 500 photos visible just because you can store 500. Have hundreds available in the backend, but initially curate perhaps 40–80 exceptional images across the primary portfolios. A prospective client remembers 10 remarkable photographs far more than 200 average ones.

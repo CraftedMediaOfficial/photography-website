@@ -1,0 +1,1214 @@
+CRAFTED MEDIA WEBSITE
+CODEX PHASED DEVELOPMENT & APPROVAL PLAN
+=========================================
+
+Purpose
+-------
+Build the Crafted Media Photography & Cinematography website incrementally.
+
+The website should feel premium, cinematic, artistic, modern and warm, using a
+Peacock Blue + Cream/Ivory visual identity. Photography and films must remain
+the primary visual focus.
+
+The website is not only a portfolio. It must ultimately work as a premium
+lead-generation website while remaining fast, mobile-first, easy to maintain,
+SEO-friendly and capable of supporting 500+ portfolio images.
+
+IMPORTANT DEVELOPMENT RULE
+--------------------------
+Codex MUST complete ONLY ONE PHASE at a time.
+
+For every phase Codex must:
+
+1. Read this complete plan before making changes.
+2. Check the CURRENT PROJECT STATUS section.
+3. Work ONLY on the active phase.
+4. Do not begin any later phase even if it appears easy or related.
+5. Preserve all features completed in earlier approved phases.
+6. Run the required tests for the phase.
+7. Fix all issues found by those tests.
+8. Perform regression checks on important functionality from earlier phases.
+9. Update this TXT file before finishing the phase.
+10. Mark the phase as:
+       READY FOR USER REVIEW
+   but NOT:
+       APPROVED
+11. Stop and ask the user to review/test the phase.
+12. Continue to the next phase ONLY after the user explicitly approves the
+    current phase.
+
+If the user requests changes during review:
+- keep the phase status as IN REVIEW,
+- implement the requested changes,
+- rerun tests,
+- update this document,
+- return it for review again.
+
+Never self-approve a phase.
+
+
+======================================================================
+RECOMMENDED DEVELOPMENT PRINCIPLES
+======================================================================
+
+1. Mobile-first development.
+2. Progressive enhancement instead of building everything at once.
+3. Reusable components instead of duplicated page code.
+4. Portfolio categories/albums must be data-driven and NOT hard-coded into
+   individual pages.
+5. Architecture must support adding future portfolio categories without
+   redesigning the website.
+6. Optimize for hundreds of photographs but curate a much smaller number on
+   public-facing pages.
+7. Prefer large editorial photography layouts over dense image grids.
+8. Keep animations subtle.
+9. Avoid adding heavy frameworks/libraries unless justified.
+10. Keep the public website functional even if optional integrations fail.
+11. Never commit secrets/API keys.
+12. Maintain accessibility basics:
+    semantic HTML, keyboard navigation, labels, alt text, visible focus states
+    and sufficient contrast.
+13. Do not host large cinematography files directly unless specifically
+    required. Prefer YouTube/Instagram/Vimeo style embeds or links.
+14. Every phase should leave the repository in a deployable state.
+
+
+======================================================================
+SOURCE CONTROL RULES
+======================================================================
+
+Before each phase:
+- confirm the working tree state,
+- understand existing files,
+- avoid overwriting unrelated user changes.
+
+Recommended commit structure:
+
+phase-01-foundation
+phase-02-brand-system
+phase-03-homepage
+...
+
+Prefer small commits inside the phase if necessary.
+
+Do NOT rewrite git history or delete user work without explicit approval.
+
+
+======================================================================
+CURRENT PROJECT STATUS
+======================================================================
+
+Current Active Phase: PHASE 1
+
+Overall Status: READY FOR USER REVIEW
+
+Last Approved Phase: None
+
+Last Updated By Codex: Codex
+
+Last Update:
+- Phase 1 foundation completed and awaiting user review.
+
+User Review Notes:
+- None yet.
+
+
+======================================================================
+PHASE STATUS VALUES
+======================================================================
+
+NOT STARTED
+IN PROGRESS
+READY FOR USER REVIEW
+IN REVIEW
+APPROVED
+BLOCKED
+
+
+======================================================================
+PHASE 1 — PROJECT FOUNDATION + DEPLOYMENT BASELINE
+======================================================================
+
+Status: READY FOR USER REVIEW
+
+Goal:
+Create a clean, maintainable website foundation and verify that the project can
+be developed locally and deployed reliably.
+
+Scope:
+- Inspect the existing repository before changing architecture.
+- Establish clean source structure.
+- Set up global styles/reset.
+- Set up reusable layout structure.
+- Create temporary Home page.
+- Create header/navigation shell.
+- Create footer shell.
+- Add placeholder routes/pages:
+    Home
+    About
+    Portfolio
+    Films
+    Services
+    Contact
+- Add responsive navigation including mobile menu.
+- Add basic 404 handling if supported by the chosen stack.
+- Confirm GitHub Pages/custom-domain deployment compatibility.
+- Preserve the existing custom-domain setup.
+- Add a concise README section explaining:
+    local run
+    build
+    test
+    deploy
+- Ensure no secrets are stored in repository.
+
+Do NOT:
+- build the final homepage,
+- create galleries,
+- create admin,
+- create enquiry backend.
+
+Required Tests:
+- project installs/builds successfully,
+- project runs locally,
+- every navigation route loads,
+- mobile navigation works,
+- no obvious console errors,
+- production build succeeds,
+- deployed page works through the configured domain/GitHub Pages path.
+
+User Review:
+User checks navigation, page loading and deployed baseline.
+
+Approval Gate:
+Do not start Phase 2 until user approves Phase 1.
+
+
+======================================================================
+PHASE 2 — BRAND DESIGN SYSTEM + RESPONSIVE UI FOUNDATION
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Establish the final visual language before building major pages.
+
+Scope:
+Create reusable design tokens/components for:
+
+Colours:
+- Deep Peacock Blue
+- Cream / Ivory
+- White
+- Dark Charcoal
+- optional restrained beige/gold accent
+
+Typography:
+- elegant/editorial heading style,
+- highly readable body typography.
+
+Reusable UI:
+- buttons,
+- links,
+- section titles,
+- cards,
+- image frames,
+- spacing system,
+- containers,
+- responsive breakpoints,
+- CTA styling,
+- forms baseline.
+
+Interaction rules:
+- subtle hover,
+- fade-in,
+- gentle image zoom where appropriate,
+- reduced-motion support,
+- no flashy transitions.
+
+Prepare reusable:
+- Header
+- Footer
+- CTA
+- Section wrapper
+- Image component
+- responsive layout helpers.
+
+Add a temporary internal style showcase/dev section if useful.
+
+Required Tests:
+- desktop/tablet/mobile layout checks,
+- contrast/readability checks,
+- keyboard focus check,
+- nav regression,
+- production build.
+
+User Review:
+User approves overall colours, fonts, buttons, spacing and premium visual feel.
+
+Approval Gate:
+No major content pages until visual system is approved.
+
+
+======================================================================
+PHASE 3 — HOMEPAGE V1: PREMIUM VISUAL JOURNEY
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Create the main public landing experience.
+
+Recommended Homepage Flow:
+1. Hero photograph or optional muted cinematic showreel area
+2. Short brand introduction
+3. Featured Wedding Story
+4. Selected Portfolio Categories
+5. Cinematic Films / Showreel teaser
+6. Meet the Photographer
+7. Our Approach / Client Experience
+8. Testimonials preview
+9. Instagram preview placeholder/integration-ready section
+10. Final CTA
+11. Enquiry teaser
+12. Contact/social footer
+
+Hero should communicate quickly:
+- who Crafted Media is,
+- Photography + Cinematography,
+- core style,
+- clear actions.
+
+Primary CTAs:
+- View Our Work
+- Check Availability
+
+Other possible CTA language:
+- Tell Us Your Story
+- Plan Your Shoot
+- Let's Create Something Beautiful
+
+Keep photography dominant.
+Avoid showing every portfolio category on homepage.
+
+Required Tests:
+- responsive visual checks,
+- hero loading,
+- CTA routing,
+- mobile button sizes,
+- no horizontal overflow,
+- basic Lighthouse/performance sanity check,
+- nav regression,
+- build test.
+
+User Review:
+User reviews homepage look/feel and section order.
+
+Approval Gate:
+Homepage structure must be approved before detailed portfolio implementation.
+
+
+======================================================================
+PHASE 4 — ABOUT + PHOTOGRAPHER + TEAM + BRAND STORY
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Build trust and show the people behind Crafted Media.
+
+Scope:
+
+About page:
+- company story,
+- creative philosophy,
+- photography/cinematography approach,
+- natural storytelling,
+- emotional/cinematic positioning.
+
+Photographer/Founder:
+- portrait,
+- name,
+- journey,
+- philosophy,
+- preferred style/moments,
+- personal but professional presentation.
+
+Team:
+- photo,
+- name,
+- role,
+- short description.
+
+Photography Style section:
+- Candid
+- Natural
+- Editorial
+- Cinematic
+- Emotional
+- Timeless
+
+Client Experience:
+Step 01 — Tell Us Your Story
+Step 02 — Let's Talk
+Step 03 — Planning
+Step 04 — Shoot Day
+Step 05 — Editing & Delivery
+
+Architecture:
+Team members/content should be represented in structured data so later admin
+integration is possible.
+
+Required Tests:
+- responsive layouts,
+- image alt text,
+- page links,
+- no layout shifts from portraits,
+- accessibility sanity check,
+- build/regression tests.
+
+User Review:
+User reviews the wording, portraits, brand personality and trust factor.
+
+
+======================================================================
+PHASE 5 — PORTFOLIO ARCHITECTURE + CATEGORY EXPERIENCE
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Create a scalable, data-driven public portfolio architecture.
+
+Initial Categories:
+- Weddings
+- Pre-Weddings
+- Cultural & Family Events
+- Corporate Events
+- Sports Events
+- Product Photography
+- Food Photography
+- Kids Photography
+
+Architecture MUST support future categories such as:
+- Creative Portraits
+- Conceptual Shoots
+- Brand Shoots
+- Fashion
+- Maternity
+- Family Portraits
+- Interiors
+- Commercial Campaigns
+- Personal Branding
+- Creator Content
+- Travel Photography
+
+Important:
+Do NOT create separate hard-coded logic for every category.
+
+Each category should support:
+- name,
+- slug,
+- description,
+- cover image,
+- display order,
+- visibility/status,
+- albums.
+
+Build:
+- /portfolio
+- category listing/navigation,
+- individual category pages,
+- premium cover presentations,
+- empty-state handling.
+
+Required Tests:
+- all categories render from data,
+- category ordering works,
+- hidden category logic can be represented,
+- invalid category gives safe 404,
+- mobile layout,
+- build/regression tests.
+
+User Review:
+User reviews category organization and visual presentation.
+
+
+======================================================================
+PHASE 6 — ALBUMS + PREMIUM PHOTO GALLERY EXPERIENCE
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Create the core photography viewing experience.
+
+Each album/story should support:
+- Album Name
+- Category
+- Cover Image
+- Description
+- Date
+- Location
+- Photos
+- optional videos
+- Visibility: Draft / Published / Hidden
+- Display Order
+
+Example:
+Weddings
+  -> Priya & Arjun
+  -> Sneha & Rohit
+  -> Ananya & Rahul
+
+Gallery requirements:
+- editorial/masonry/full-width style as appropriate,
+- larger images rather than tiny dense grids,
+- fullscreen/lightbox viewing,
+- previous/next navigation,
+- mobile swipe if practical,
+- keyboard controls,
+- close controls,
+- lazy loading,
+- responsive image sources,
+- thumbnails,
+- graceful image failure state.
+
+Featured Story layout should allow a curated narrative sequence rather than a
+random dump of images.
+
+Required Tests:
+- open/close lightbox,
+- next/previous,
+- keyboard navigation,
+- mobile interaction,
+- lazy loading check,
+- image aspect-ratio handling,
+- hidden/draft album not publicly reachable,
+- 30+ image stress test,
+- build/regression tests.
+
+User Review:
+User reviews photo presentation and gallery usability.
+
+
+======================================================================
+PHASE 7 — FILMS / CINEMATOGRAPHY EXPERIENCE
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Give cinematography equal importance without slowing the website.
+
+Film types may include:
+- Wedding Film
+- Wedding Highlight
+- Pre-Wedding Film
+- Couple Film
+- Event Highlight
+- Brand Film
+- Corporate Film
+- Product Video
+- Reels
+
+Each film item should support:
+- title,
+- type/category,
+- thumbnail,
+- description,
+- destination/embed URL,
+- display order,
+- visibility.
+
+Support:
+- embedded playback where sensible,
+- external YouTube/Instagram links where appropriate,
+- attractive thumbnail presentation,
+- optional homepage showreel.
+
+Do not autoplay loud audio.
+Avoid hosting massive video files directly in the website repository.
+
+Required Tests:
+- valid external video links,
+- graceful behavior for unavailable embed,
+- mobile playback/layout,
+- showreel CTA,
+- external-link security attributes,
+- build/regression tests.
+
+User Review:
+User checks cinematography presentation and playback/link behavior.
+
+
+======================================================================
+PHASE 8 — SERVICES + FAQ + LOCATION + TRUST CONTENT
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Explain services clearly without turning the site into a text-heavy brochure.
+
+Services:
+Photography:
+- Wedding Photography
+- Event Photography
+- Portrait Photography
+- Commercial Photography
+
+Cinematography:
+- Wedding Films
+- Event Films
+- Brand Films
+- Reels / Social Content
+
+Packages:
+Support flexible wording such as:
+- Packages starting from ...
+- Custom packages available
+- Request Pricing
+
+Do not force detailed pricing unless user supplies it.
+
+FAQ structure should include:
+- booking lead time,
+- travel,
+- photography + cinematography,
+- delivery time,
+- raw photographs,
+- number of edited photographs,
+- albums,
+- destination weddings,
+- booking confirmation.
+
+Locations:
+- Available across Bengaluru, India & Destination Events
+
+Prepare architecture for future SEO landing pages such as:
+- Bengaluru Wedding Photographer
+- Goa Wedding Photographer
+- Coorg Pre-Wedding Photographer
+
+Required Tests:
+- FAQ accessibility,
+- links/CTA,
+- responsive layouts,
+- build/regression tests.
+
+User Review:
+User reviews business information and service clarity.
+
+
+======================================================================
+PHASE 9 — CONTACT + ENQUIRY + WHATSAPP CONVERSION
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Turn portfolio visitors into qualified enquiries.
+
+Contact methods:
+- Phone
+- WhatsApp
+- Instagram
+- Email
+
+Enquiry Form Fields:
+- Name
+- Phone / WhatsApp Number
+- Email
+- Event Type
+- Event Date
+- City / Location
+- Approximate Budget
+- Photography / Cinematography / Both
+- Tell us about your event / vision
+
+Event Type examples:
+- Wedding
+- Pre-Wedding
+- Engagement
+- Cultural Event
+- Corporate
+- Product
+- Food
+- Kids
+- Brand Shoot
+- Other
+
+Budget examples:
+- ₹25k–₹50k
+- ₹50k–₹1L
+- ₹1L–₹2L
+- ₹2L–₹5L
+- ₹5L+
+- Let's Discuss
+
+After successful submission:
+- display confirmation,
+- provide "Continue on WhatsApp",
+- optionally create a pre-filled WhatsApp enquiry message.
+
+Important:
+Choose a submission method compatible with the actual hosting architecture.
+If GitHub Pages remains static hosting, do not invent a local backend that cannot
+work in production. Use an approved external form/backend/serverless solution
+only when the user chooses it.
+
+Implement:
+- client-side validation,
+- spam-resistance approach appropriate for architecture,
+- success/error states,
+- privacy-conscious data handling.
+
+Required Tests:
+- missing fields,
+- invalid email/phone,
+- invalid date,
+- successful submission path,
+- backend/service failure path,
+- WhatsApp deep link,
+- mobile form usability,
+- double-submission protection where practical,
+- build/regression tests.
+
+User Review:
+User submits real test enquiries and confirms the workflow.
+
+Approval Gate:
+Do not connect production email/form services without user-approved
+configuration.
+
+
+======================================================================
+PHASE 10 — CONTENT MANAGEMENT / ADMIN V1
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Allow owner to manage portfolio content without editing source code.
+
+This is a major architectural phase.
+
+Before implementation Codex MUST inspect the existing hosting architecture and
+document the chosen CMS/admin approach.
+
+Admin/content-management requirements:
+- Add photo
+- Remove photo
+- Replace photo
+- Move photo between categories/albums
+- Create category
+- Create album
+- Rename album
+- Reorder photos
+- Reorder albums/categories
+- Hide/show categories
+- Hide/show albums
+- Draft / Published / Hidden state
+- Select album cover
+- Select homepage featured work
+- Manage videos
+- Manage testimonials
+- Manage About content
+- Manage Team
+- Manage contact/social links
+
+Preferred UX:
+- simple interface,
+- drag/drop ordering if technically suitable,
+- clear publishing status.
+
+Security:
+- admin must NOT be publicly editable,
+- credentials/secrets must never be committed,
+- authorization must be enforced by the chosen backend/CMS.
+
+Important:
+Because GitHub Pages is static hosting, a true admin system may require:
+- a Git-based CMS,
+- headless CMS,
+- external database/storage,
+- serverless backend,
+or a different hosting architecture.
+
+Codex must NOT silently choose a paid vendor.
+Present architecture implications in the phase notes if a choice is needed.
+
+Required Tests:
+- authenticated vs unauthenticated access,
+- CRUD workflow,
+- ordering,
+- visibility states,
+- homepage feature selection,
+- data persistence,
+- invalid inputs,
+- public-site regression after content changes.
+
+User Review:
+Owner performs actual content management operations.
+
+Approval Gate:
+Architecture/cost implications must be approved before production use.
+
+
+======================================================================
+PHASE 11 — IMAGE PIPELINE + 500+ IMAGE PERFORMANCE
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Ensure the website remains fast with a large photography library.
+
+Implement/verify:
+- WebP/AVIF where supported,
+- responsive srcset/sizes,
+- multiple generated image sizes,
+- thumbnail generation,
+- lazy loading,
+- compression,
+- width/height/aspect-ratio metadata,
+- caching strategy,
+- CDN/image optimization if the architecture uses one,
+- avoid shipping original full-resolution files unnecessarily.
+
+Create a repeatable image ingestion workflow.
+
+Target:
+The backend/content library may eventually contain 500+ images while the public
+website still loads only what is needed.
+
+Performance test cases:
+- homepage,
+- category page,
+- album with many photos,
+- mobile simulated network.
+
+Measure:
+- LCP,
+- CLS,
+- page weight,
+- unnecessary requests,
+- image loading behavior.
+
+Do not blindly optimize only for a Lighthouse score; visual quality matters.
+
+Required Tests:
+- automated build,
+- image pipeline test,
+- broken image handling,
+- lazy loading,
+- large album test,
+- mobile performance report,
+- regression tests.
+
+User Review:
+User compares visual quality vs speed on phone and desktop.
+
+
+======================================================================
+PHASE 12 — SEO + SOCIAL SHARING + ANALYTICS
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Make Crafted Media discoverable and measurable.
+
+SEO:
+- unique title tags,
+- meta descriptions,
+- canonical URLs where appropriate,
+- image alt text,
+- sitemap,
+- robots configuration,
+- clean URLs,
+- OpenGraph metadata,
+- social sharing images,
+- structured data appropriate to the business/content,
+- semantic headings.
+
+Example URLs:
+- /weddings
+- /pre-wedding
+- /corporate
+- /product-photography
+
+Local/business:
+- Google Business Profile link,
+- Google Maps/Profile link if supplied.
+
+Analytics:
+Track, subject to user-approved provider:
+- visitors,
+- portfolio views,
+- traffic source,
+- Instagram referrals,
+- Google referrals,
+- enquiry submissions,
+- WhatsApp clicks,
+- important CTA clicks.
+
+Privacy:
+Do not add invasive tracking unnecessarily.
+Document what is collected.
+
+Social sharing:
+WhatsApp/social shares should display:
+- Crafted Media title,
+- useful description,
+- strong preview image.
+
+Required Tests:
+- metadata inspection,
+- sitemap validation,
+- structured data validation where practical,
+- share preview metadata,
+- analytics events in test/debug mode,
+- build/regression tests.
+
+User Review:
+User verifies Google/social appearance and analytics choice.
+
+
+======================================================================
+PHASE 13 — FINAL QA + ACCESSIBILITY + SECURITY + PRODUCTION LAUNCH
+======================================================================
+
+Status: NOT STARTED
+
+Goal:
+Perform complete end-to-end launch validation.
+
+Full regression test:
+- Home
+- About
+- Portfolio
+- Category pages
+- Albums
+- Galleries
+- Films
+- Services
+- FAQ
+- Contact
+- Enquiry
+- Admin/content management if implemented
+- Mobile navigation
+- Desktop navigation
+- WhatsApp
+- Email/phone links
+- external social links
+
+Browser/device checks:
+- Chrome
+- Safari/WebKit where available
+- Firefox
+- Android/mobile viewport
+- iPhone/mobile viewport
+
+Accessibility:
+- keyboard navigation,
+- focus order,
+- labels,
+- alt text,
+- dialog/lightbox accessibility,
+- contrast,
+- reduced motion.
+
+Security:
+- secrets scan,
+- dependency/security check where supported,
+- form abuse considerations,
+- admin authorization,
+- safe external links,
+- no debug data exposed.
+
+Performance:
+Run final performance checks on representative pages.
+
+Content:
+- no lorem ipsum,
+- no accidental placeholder images,
+- no broken links,
+- no draft galleries visible,
+- correct phone/email/Instagram/WhatsApp,
+- correct domain,
+- favicon/logo/social image.
+
+Deployment:
+- production build,
+- production deploy,
+- live smoke test.
+
+Deliver:
+- final README,
+- architecture notes,
+- content-management instructions,
+- image-upload workflow,
+- deployment/recovery instructions,
+- known limitations/future roadmap.
+
+User Review:
+Full live-site acceptance.
+
+Only after explicit approval mark:
+PROJECT STATUS: PRODUCTION V1 APPROVED
+
+
+======================================================================
+FUTURE PHASE — NOT PART OF INITIAL V1
+======================================================================
+
+PRIVATE CLIENT GALLERIES
+
+Do NOT build this during the initial 13 phases unless explicitly requested.
+
+Possible future features:
+- private gallery URL,
+- password/PIN,
+- client viewing,
+- favorites,
+- downloads,
+- album image selection.
+
+The current architecture should avoid decisions that make this unnecessarily
+difficult later.
+
+
+======================================================================
+CODEX PHASE COMPLETION TEMPLATE
+======================================================================
+
+At the end of EVERY phase, Codex MUST append/update the following information
+inside this document:
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase:
+Status: READY FOR USER REVIEW
+
+Date:
+
+What was implemented:
+- ...
+
+Files added:
+- ...
+
+Files modified:
+- ...
+
+Architecture/technical decisions:
+- ...
+
+Tests executed:
+- ...
+
+Test results:
+- ...
+
+Manual checks performed:
+- ...
+
+Performance observations:
+- ...
+
+Known issues / limitations:
+- ...
+
+Items intentionally deferred:
+- ...
+
+Instructions for user review:
+1. ...
+2. ...
+3. ...
+
+User requested changes:
+- None yet
+
+User approval:
+PENDING
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+======================================================================
+WHEN THE USER APPROVES A PHASE
+======================================================================
+
+Codex should update:
+
+Status: APPROVED
+User approval: APPROVED
+Approval notes: <brief note supplied by user>
+
+Then update CURRENT PROJECT STATUS:
+
+Current Active Phase: <next phase>
+Last Approved Phase: <approved phase>
+
+The next phase may then begin.
+
+
+======================================================================
+CHANGE LOG
+======================================================================
+
+Every phase must add a short entry.
+
+Format:
+
+[DATE] Phase X
+- Summary of implementation.
+- Important technical decisions.
+- Tests passed.
+- User approval status.
+
+[2026-10-03] Phase 1
+- Added a static, GitHub Pages-compatible website foundation with six route shells, shared header/footer, mobile navigation and a 404 page.
+- Added a dependency-free Node build/test setup and GitHub Actions Pages deployment workflow; no custom-domain configuration existed in the repository to preserve.
+- Static route, asset, 404, formatting and repository secret-pattern checks passed. Node was unavailable in the local environment, so the Node build/test commands and live GitHub Pages deployment remain for user verification.
+- User approval status: PENDING.
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 1 — PROJECT FOUNDATION + DEPLOYMENT BASELINE
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Created temporary route pages for Home, About, Portfolio, Films, Services and Contact.
+- Added a shared, semantic header/footer shell and responsive mobile navigation.
+- Added a GitHub Pages-compatible 404 page, global reset/accessibility basics, and visible keyboard focus handling.
+- Added a static build/test/server setup and a GitHub Pages deployment workflow.
+
+Files added:
+- app.js
+- 404.html
+- about/index.html
+- portfolio/index.html
+- films/index.html
+- services/index.html
+- contact/index.html
+- package.json
+- scripts/build.mjs
+- scripts/verify.mjs
+- scripts/serve.mjs
+- .github/workflows/deploy.yml
+
+Files modified:
+- index.html
+- style.css
+- README.md
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Kept the site dependency-free and static for reliable GitHub Pages compatibility.
+- Used actual directory routes rather than client-side route rewriting, so direct links work on GitHub Pages.
+- Shared header/footer is injected from one small JavaScript source; page bodies remain simple static HTML.
+
+Tests executed:
+- Static HTML structure and shared-navigation-source validation.
+- Local HTTP route check for all six public routes and unknown-route 404 response.
+- Git whitespace validation and secret-pattern scan.
+
+Test results:
+- PASS: Seven HTML route shells contain expected structure and assets.
+- PASS: Home, About, Portfolio, Films, Services and Contact returned HTTP 200 locally; unknown path returned HTTP 404.
+- PASS: No whitespace errors; no application secrets found.
+- NOT RUN: `npm run test` and `npm run build`, because Node.js is unavailable in this environment. The deployment workflow runs Node 20.
+- NOT RUN: Live GitHub Pages/custom-domain check, because this repository has no existing Pages/custom-domain configuration or deployment access in the workspace.
+
+Manual checks performed:
+- Confirmed all expected navigation destinations are generated from the shared navigation source.
+- Confirmed mobile-menu markup includes button state and navigation association.
+
+Performance observations:
+- No external dependencies, images, or runtime services are included in this baseline.
+
+Known issues / limitations:
+- A Node 20+ local environment is required to run the documented build/test commands.
+- GitHub Pages must be set to use GitHub Actions in repository settings before the first deployment; configure any custom domain there.
+
+Items intentionally deferred:
+- Final brand design, photography, galleries, films, enquiry form, CMS/admin and all later-phase content.
+
+Instructions for user review:
+1. Run `npm run test` and `npm run build` in a Node 20+ environment.
+2. Run `npm run start`; check every navigation link and the mobile Menu button at `http://localhost:4173`.
+3. Enable GitHub Pages with GitHub Actions, push to `main`, and confirm the deployed Pages URL and any custom domain.
+
+User requested changes:
+- None yet
+
+User approval:
+PENDING
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+======================================================================
+DEFINITION OF DONE FOR THE ENTIRE V1
+======================================================================
+
+The project is complete only when:
+
+- premium Crafted Media branding is consistently implemented,
+- mobile experience is excellent,
+- homepage creates a strong visual first impression,
+- portfolio is category/album based and extensible,
+- photography galleries feel editorial and premium,
+- cinematography has a dedicated experience,
+- photographer/team/about content builds trust,
+- services and FAQs are available,
+- enquiry + WhatsApp conversion works,
+- owner has an approved content-management approach,
+- 500+ image architecture is performant,
+- SEO/social sharing fundamentals work,
+- analytics is configured if approved,
+- the site passes final QA,
+- the live custom domain is verified,
+- user explicitly approves production V1.
+
+
+======================================================================
+FINAL PRODUCT PRINCIPLE
+======================================================================
+
+The website must never compete with the photographs.
+
+Avoid:
+- excessive animation,
+- overly colourful backgrounds,
+- complicated UI,
+- clutter,
+- giant blocks of text,
+- unnecessary effects.
+
+Desired visitor reaction:
+
+"Wow. I want my photos to look like this."
+
+The experience should naturally guide a visitor through:
+
+Emotion
+-> Portfolio
+-> Story
+-> Trust
+-> Availability
+-> Enquiry
+-> WhatsApp conversation
