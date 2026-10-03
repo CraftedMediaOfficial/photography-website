@@ -22,6 +22,7 @@ async function verify() {
   for (const component of components) if (!css.includes(component)) throw new Error(`Component style ${component} is missing.`);
   if (!css.includes("@media (prefers-reduced-motion: reduce)")) throw new Error("Reduced-motion support is missing.");
   if (!css.includes(":focus-visible")) throw new Error("Visible keyboard focus styling is missing.");
+  for (const mobilePortfolioRule of ["main { min-width: 0", "grid-template-columns: repeat(2, minmax(0, 1fr))", "font-size: 1rem", ".portfolio-category-nav { min-width: 0", ".album-card > img { width: 100%; height: auto", ".album-meta { min-width: 0", "grid-template-columns: minmax(0, 1fr)"]) if (!css.includes(mobilePortfolioRule)) throw new Error(`Mobile portfolio containment rule ${mobilePortfolioRule} is missing.`);
   const home = await fs.readFile(resolve(root, "index.html"), "utf8");
   const homeSections = ["home-hero", "home-intro", "featured-story", "selected-work", "film-teaser", "photographer-teaser", "approach", "kind-words", "social-teaser", "home-cta"];
   for (const section of homeSections) if (!home.includes(section)) throw new Error(`Phase 3 homepage is missing ${section}.`);

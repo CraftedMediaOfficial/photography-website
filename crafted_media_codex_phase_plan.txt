@@ -1149,6 +1149,13 @@ Format:
 - Album generation, gallery behavior, responsive-image, visibility, accessibility regression and production build checks passed.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 6 Mobile Review Correction
+- Removed a category-navigation minimum-content overflow that expanded mobile pages beyond the viewport.
+- Replaced the small horizontal category rail with readable 16px, two-column mobile controls and wrapped desktop controls.
+- Corrected album cover intrinsic-height behavior so cards keep a crisp 3:2 mobile presentation.
+- Added 320px, 390px and 430px browser checks across all eight category pages.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1575,7 +1582,8 @@ Instructions for user review:
 4. Approve Phase 6 or list the required gallery/content changes.
 
 User requested changes:
-- None yet.
+- Make category pages fit naturally on mobile without zooming and enlarge the small category controls.
+- Implemented a contained, readable two-column mobile category selector and corrected oversized album-image behavior.
 
 User approval:
 PENDING
