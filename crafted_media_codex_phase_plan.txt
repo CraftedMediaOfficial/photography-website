@@ -98,23 +98,25 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 3
+Current Active Phase: PHASE 4
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 2
+Last Approved Phase: PHASE 3
 
 Last Updated By Codex: Codex
 
 Last Update:
 - Phase 1 approved by the user.
 - Phase 2 brand design system approved by the user.
-- Phase 3 homepage completed and awaiting user review.
+- Phase 3 homepage approved by the user.
+- Phase 4 About, photographer, team and brand-story experience completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
 - User approved Phase 2 and requested Phase 3 implementation and live deployment.
-- Phase 3 must be reviewed on the live website before approval.
+- User approved Phase 3 and requested Phase 4 implementation and live deployment.
+- Phase 4 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -257,7 +259,7 @@ No major content pages until visual system is approved.
 PHASE 3 — HOMEPAGE V1: PREMIUM VISUAL JOURNEY
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Create the main public landing experience.
@@ -315,7 +317,7 @@ Homepage structure must be approved before detailed portfolio implementation.
 PHASE 4 — ABOUT + PHOTOGRAPHER + TEAM + BRAND STORY
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Build trust and show the people behind Crafted Media.
@@ -1108,6 +1110,18 @@ Format:
 - Static verification and production build passed; a browser screenshot attempt was blocked by the execution sandbox.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 3 Approval
+- User approved the live Phase 3 homepage and requested Phase 4.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 4
+- Replaced the About placeholder with a full brand story, founder profile layout, philosophy, six visual-style principles, structured team roles and five-step client experience.
+- Added structured About/team data so names, roles and biographies can be changed without redesigning the page.
+- Added an optimized, explicitly temporary photographer portrait while awaiting the real founder photograph and biography.
+- Preserved the approved Phase 2 system and Phase 3 homepage and navigation behavior.
+- Static verification and production build passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1257,7 +1271,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 3 — HOMEPAGE V1: PREMIUM VISUAL JOURNEY
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1311,6 +1325,74 @@ Instructions for user review:
 2. Follow every homepage CTA and confirm the section order and pacing.
 3. Review the featured story, selected work, film and photographer teasers.
 4. Approve Phase 3 or list the visual/content changes required.
+
+User approval:
+APPROVED — user approved Phase 3 and requested Phase 4 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 4 — ABOUT + PHOTOGRAPHER + TEAM + BRAND STORY
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Rebuilt the About route as a premium trust-building brand narrative.
+- Added the Crafted Media studio story and creative philosophy.
+- Added a founder/lead-photographer presentation with an honest temporary profile state.
+- Added six photography-style principles: Candid, Natural, Editorial, Cinematic, Emotional and Timeless.
+- Added structured team cards for Photography, Cinematography and Client Experience.
+- Added the five-step client journey from first enquiry through delivery.
+- Added a final contact CTA.
+
+Files added:
+- assets/images/photographer-placeholder.webp
+- data/about.js
+- about/about.js
+
+Files modified:
+- about/index.html
+- style.css
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Kept founder and team details in structured JavaScript data for later CMS/admin migration.
+- Used textContent-based rendering for team profiles rather than injecting untrusted HTML.
+- Kept the real founder name, journey, team names and portraits explicitly pending rather than inventing business facts.
+- Added an 86 KB WebP editorial portrait placeholder and labelled it visibly as temporary.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- About-section, structured-data, client-step, asset and accessibility checks.
+- Phase 1 navigation, Phase 2 design-system and Phase 3 homepage regressions.
+
+Test results:
+- PASS: About page contains the brand story, founder, philosophy, styles, team and client-experience sections.
+- PASS: Team and founder content use structured data with required fields.
+- PASS: All five client-experience steps are present.
+- PASS: Portrait includes explicit dimensions, descriptive alt text and remains below 500 KB.
+- PASS: Production build generated the complete deployable dist directory.
+- PASS: Shared navigation, keyboard focus and reduced-motion handling remain intact.
+
+Known issues / limitations:
+- Founder name, personal journey and approved portrait have not been supplied.
+- Individual team names, biographies and portraits have not been supplied.
+- The current portrait is clearly marked as a temporary editorial placeholder.
+
+Instructions for user review:
+1. Review the live About page on phone and desktop.
+2. Confirm the company story, philosophy, six style principles and five-step client experience.
+3. Review the founder and team layouts, then supply the real names, biographies and portraits when available.
+4. Approve Phase 4 or list the required content/visual changes.
 
 User approval:
 PENDING

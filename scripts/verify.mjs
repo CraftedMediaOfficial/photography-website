@@ -28,6 +28,15 @@ async function verify() {
     const details = await fs.stat(resolve(root, image));
     if (details.size > 500_000) throw new Error(`${image} exceeds the Phase 3 homepage image budget.`);
   }
-  console.log(`Verified ${pages.length} responsive pages, shared navigation, Phase 3 homepage sections and CTAs, optimized imagery, keyboard focus and reduced-motion support.`);
+  const about = await fs.readFile(resolve(root, "about/index.html"), "utf8");
+  const aboutSections = ["about-hero", "about-story", "founder", "philosophy", "style-pillars", "team", "experience"];
+  for (const section of aboutSections) if (!about.includes(section)) throw new Error(`Phase 4 About page is missing ${section}.`);
+  for (const step of ["Tell us your story", "Let’s talk", "Planning", "Shoot day", "Editing &amp; delivery"]) if (!about.includes(step)) throw new Error(`Phase 4 client experience is missing ${step}.`);
+  for (const asset of ["../data/about.js", "about.js", "../assets/images/photographer-placeholder.webp"]) if (!about.includes(asset)) throw new Error(`Phase 4 About page is missing ${asset}.`);
+  const aboutData = await fs.readFile(resolve(root, "data/about.js"), "utf8");
+  for (const field of ["founder", "team", "name", "role", "description"]) if (!aboutData.includes(field)) throw new Error(`Structured About data is missing ${field}.`);
+  const portrait = await fs.stat(resolve(root, "assets/images/photographer-placeholder.webp"));
+  if (portrait.size > 500_000) throw new Error("The Phase 4 portrait placeholder exceeds the image budget.");
+  console.log(`Verified ${pages.length} responsive pages, Phase 3 homepage, Phase 4 About content/data, optimized imagery, keyboard focus and reduced-motion support.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });
