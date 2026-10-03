@@ -98,21 +98,23 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 2
+Current Active Phase: PHASE 3
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 1
+Last Approved Phase: PHASE 2
 
 Last Updated By Codex: Codex
 
 Last Update:
 - Phase 1 approved by the user.
-- Phase 2 brand design system completed and awaiting user review.
+- Phase 2 brand design system approved by the user.
+- Phase 3 homepage completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
-- Phase 2 must be reviewed on the live website before approval.
+- User approved Phase 2 and requested Phase 3 implementation and live deployment.
+- Phase 3 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -189,7 +191,7 @@ Do not start Phase 2 until user approves Phase 1.
 PHASE 2 — BRAND DESIGN SYSTEM + RESPONSIVE UI FOUNDATION
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Establish the final visual language before building major pages.
@@ -255,7 +257,7 @@ No major content pages until visual system is approved.
 PHASE 3 — HOMEPAGE V1: PREMIUM VISUAL JOURNEY
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Create the main public landing experience.
@@ -1094,6 +1096,18 @@ Format:
 - Static verification and production build passed; browser preview was skipped at the user's request.
 - User approval status: PENDING.
 
+[2026-10-03] Phase 2 Approval
+- User approved the live Phase 2 brand design system and requested Phase 3.
+- User approval status: APPROVED.
+
+[2026-10-03] Phase 3
+- Replaced the temporary brand showcase with a complete, mobile-first homepage visual journey.
+- Added the hero, brand introduction, featured wedding story, selected work, film teaser, photographer teaser, client approach, testimonial preview, Instagram-ready placeholder and final conversion CTA.
+- Added two optimized WebP editorial placeholder images for live visual review; approved client portfolio assets remain required for final production authenticity.
+- Preserved the Phase 2 design system, shared navigation, footer, accessibility and reduced-motion behavior.
+- Static verification and production build passed; a browser screenshot attempt was blocked by the execution sandbox.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1181,7 +1195,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 2 — BRAND DESIGN SYSTEM + RESPONSIVE UI FOUNDATION
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1229,6 +1243,74 @@ Instructions for user review:
 2. Check Peacock Blue/Ivory balance, editorial heading style, body readability, spacing, buttons, cards and form treatment.
 3. Open and close the mobile menu, navigate the existing routes and confirm the footer treatment.
 4. Approve Phase 2 or list requested visual changes.
+
+User approval:
+APPROVED — user approved Phase 2 and requested Phase 3 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 3 — HOMEPAGE V1: PREMIUM VISUAL JOURNEY
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-03
+
+What was implemented:
+- Added a full-viewport cinematic hero with clear View Our Work and Check Availability actions.
+- Added a concise Crafted Media introduction and natural-storytelling positioning.
+- Added a featured wedding-story presentation with editorial imagery.
+- Added selected Weddings, Events and Brands entry points.
+- Added film, photographer, client-experience, testimonial and Instagram-ready teasers.
+- Added a final contact conversion section and preserved the shared footer.
+
+Files added:
+- assets/images/home-hero.webp
+- assets/images/featured-story.webp
+
+Files modified:
+- index.html
+- style.css
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Kept Phase 3 within the dependency-free static architecture.
+- Compressed both homepage visuals to WebP and kept each below 500 KB.
+- Used explicit image dimensions, hero preload/fetch priority and lazy loading for the below-fold story image.
+- Used temporary generated editorial imagery because approved client portfolio assets were not available; no image is presented as a named real-client story.
+- Used an honest testimonial placeholder instead of inventing client quotations.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- Homepage section, CTA route, optimized-image and accessibility source checks.
+- Phase 1 navigation and Phase 2 design-system regression checks.
+- Headless browser screenshot attempt.
+
+Test results:
+- PASS: Seven route shells retain shared navigation, responsive metadata and skip links.
+- PASS: All Phase 3 homepage sections and required CTA destinations are present.
+- PASS: Hero and featured-story images exist, include dimensions/alt text and remain below 500 KB.
+- PASS: Production build generated the complete deployable dist directory.
+- PASS: Visible keyboard focus and reduced-motion support remain intact.
+- BLOCKED: Automated viewport screenshot run, because Chromium socket creation is restricted in this sandbox.
+
+Known issues / limitations:
+- Homepage photographs are temporary generated editorial visuals and should be replaced with approved Crafted Media work.
+- Testimonials and Instagram are honest integration-ready placeholders pending real content and later phases.
+- Detailed portfolios, galleries, films, About content and enquiry handling remain deferred to their approved phases.
+
+Instructions for user review:
+1. Review the live first screen on phone and desktop for headline readability and image crop.
+2. Follow every homepage CTA and confirm the section order and pacing.
+3. Review the featured story, selected work, film and photographer teasers.
+4. Approve Phase 3 or list the visual/content changes required.
 
 User approval:
 PENDING

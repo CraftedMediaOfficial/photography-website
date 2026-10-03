@@ -21,7 +21,13 @@ async function verify() {
   if (!css.includes("@media (prefers-reduced-motion: reduce)")) throw new Error("Reduced-motion support is missing.");
   if (!css.includes(":focus-visible")) throw new Error("Visible keyboard focus styling is missing.");
   const home = await fs.readFile(resolve(root, "index.html"), "utf8");
-  for (const sample of ["swatches", "button--primary", "card", "image-frame", "demo-form", "cta"]) if (!home.includes(sample)) throw new Error(`Brand preview is missing ${sample}.`);
-  console.log(`Verified ${pages.length} responsive pages, shared navigation, design tokens, reusable components, keyboard focus and reduced-motion support.`);
+  const homeSections = ["home-hero", "home-intro", "featured-story", "selected-work", "film-teaser", "photographer-teaser", "approach", "kind-words", "social-teaser", "home-cta"];
+  for (const section of homeSections) if (!home.includes(section)) throw new Error(`Phase 3 homepage is missing ${section}.`);
+  for (const path of ["portfolio/", "films/", "about/", "services/", "contact/"]) if (!home.includes(`href="${path}"`)) throw new Error(`Phase 3 homepage CTA ${path} is missing.`);
+  for (const image of ["assets/images/home-hero.webp", "assets/images/featured-story.webp"]) {
+    const details = await fs.stat(resolve(root, image));
+    if (details.size > 500_000) throw new Error(`${image} exceeds the Phase 3 homepage image budget.`);
+  }
+  console.log(`Verified ${pages.length} responsive pages, shared navigation, Phase 3 homepage sections and CTAs, optimized imagery, keyboard focus and reduced-motion support.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });
