@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 8
+Current Active Phase: PHASE 9
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 7
+Last Approved Phase: PHASE 8
 
 Last Updated By Codex: Codex
 
@@ -114,7 +114,8 @@ Last Update:
 - Phase 5 data-driven portfolio architecture and category experience approved by the user.
 - Phase 6 album architecture, premium gallery experience and mobile corrections approved by the user.
 - Phase 7 films and cinematography experience approved by the user.
-- Phase 8 services, FAQ, location and trust experience completed and awaiting user review.
+- Phase 8 services, FAQ, location and trust experience approved by the user.
+- Phase 9 contact and enquiry experience completed and awaiting user review and production contact configuration.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -124,7 +125,8 @@ User Review Notes:
 - User approved Phase 5 and requested Phase 6 implementation and live deployment.
 - User approved Phase 6 and requested Phase 7 implementation and live deployment.
 - User approved Phase 7 and requested Phase 8 implementation and live deployment without generating new images.
-- Phase 8 must be reviewed on the live website before approval.
+- User approved Phase 8 and requested Phase 9 implementation and live deployment.
+- Phase 9 must be reviewed on the live website before approval; production delivery remains disabled until approved contact details or a form service are supplied.
 
 
 ======================================================================
@@ -559,7 +561,7 @@ User checks cinematography presentation and playback/link behavior.
 PHASE 8 — SERVICES + FAQ + LOCATION + TRUST CONTENT
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Explain services clearly without turning the site into a text-heavy brochure.
@@ -618,7 +620,7 @@ User reviews business information and service clarity.
 PHASE 9 — CONTACT + ENQUIRY + WHATSAPP CONVERSION
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Turn portfolio visitors into qualified enquiries.
@@ -1184,6 +1186,19 @@ Format:
 - Mobile/desktop browser, FAQ interaction, CTA, no-overflow, no-new-image and production build checks passed.
 - User approval status: PENDING.
 
+[2026-10-04] Phase 8 Approval
+- User approved the live Phase 8 services, FAQ, location and trust experience and requested Phase 9.
+- User approval status: APPROVED.
+
+[2026-10-04] Phase 9
+- Replaced the Contact placeholder with a complete nine-field enquiry experience and structured contact configuration.
+- Added client-side missing-field, email, phone and future-date validation with accessible inline errors.
+- Added a local enquiry-draft confirmation, copy action, safe optional WhatsApp/email links and clear not-sent messaging for static hosting.
+- Added a honeypot, minimum completion time, in-flight lock and duplicate-draft protection.
+- Added optional approved endpoint submission with success and failure states while leaving all unapproved production contact settings unset.
+- Mobile/desktop browser, validation, draft, duplicate, no-overflow and production build checks passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1705,7 +1720,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 8 — SERVICES + FAQ + LOCATION + TRUST CONTENT
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-04
 
@@ -1754,7 +1769,7 @@ Test results:
 
 Known issues / limitations:
 - Exact pricing, delivery timing, booking payment terms and raw-file policy have not been supplied and are intentionally not stated as fixed promises.
-- The Contact route remains a placeholder until Phase 9 implements the approved enquiry and WhatsApp workflow.
+- Phase 9 now provides the enquiry interface; production delivery remains pending approved contact configuration.
 
 Items intentionally deferred:
 - Working enquiry submission, phone, email, Instagram and WhatsApp configuration belong to Phase 9.
@@ -1770,6 +1785,87 @@ Instructions for user review:
 User requested changes:
 - Do not generate any images for Phase 8.
 - Implemented Phase 8 as a typography-led, image-free page.
+
+User approval:
+APPROVED — user approved Phase 8 and requested Phase 9 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 9 — CONTACT + ENQUIRY + WHATSAPP CONVERSION
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-04
+
+What was implemented:
+- Replaced the Contact placeholder with a complete responsive enquiry page.
+- Added Name, Phone/WhatsApp, Email, Event Type, Event Date, City/Location, Budget, Coverage and Event/Vision fields.
+- Added all ten specified event options, six budget choices and Photography/Cinematography/Both coverage choices.
+- Added inline missing-field, email, phone and past-date validation with focus moved to the first invalid field.
+- Added an honest local confirmation that prepares a complete enquiry draft without claiming it has been sent.
+- Added copy, new-enquiry and configuration-aware WhatsApp/email actions.
+- Added optional static-host-compatible endpoint submission with explicit success and failure behavior.
+- Added contact-method cards for Phone, WhatsApp, Email and Instagram that remain visibly pending until approved values are supplied.
+
+Files added:
+- data/contact.mjs
+- contact/contact.js
+
+Files modified:
+- contact/index.html
+- style.css
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Business phone, WhatsApp, email, Instagram and form endpoint settings live in one configuration object and remain null until owner approval.
+- The production page never invents contact information or falsely reports that an unconnected form was delivered.
+- A configured endpoint uses an asynchronous JSON request; non-success responses produce a recoverable error state while preserving entries.
+- WhatsApp messages are URL-encoded and only become available when a numeric business destination is configured.
+- Contact details are kept in browser memory only in the current configuration; no local storage or analytics capture is used.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- Required-field, option-set, validation, configuration, safe-link, spam and duplicate-control checks.
+- Headless Chromium checks at 320px, 390px and 1280px.
+- Browser interaction tests for missing fields, invalid email, invalid phone, past date, valid draft preparation and repeat submission.
+
+Test results:
+- PASS: All nine visible enquiry fields and expected options render.
+- PASS: Missing and malformed values receive accessible inline errors.
+- PASS: Valid data produces a complete local draft and clear not-sent confirmation.
+- PASS: Duplicate draft preparation is blocked for ten seconds and in-flight submission is locked.
+- PASS: Honeypot and minimum-completion-time spam controls are present.
+- PASS: Unconfigured WhatsApp and email actions remain visually hidden.
+- PASS: No form data leaves the browser in the current production configuration.
+- PASS: Mobile and desktop layouts have no horizontal overflow.
+- PASS: Production build and previous-phase regressions completed successfully.
+
+Known issues / limitations:
+- No production form endpoint has been approved, so the current page prepares a draft but does not transmit it.
+- Phone, WhatsApp number, email address and Instagram URL have not been supplied; their direct contact cards and actions remain pending.
+- The successful real-delivery and real WhatsApp paths require owner-supplied configuration and final live testing.
+
+Items intentionally deferred:
+- Connecting a form provider, email service or serverless endpoint requires explicit user approval and credentials/configuration.
+- Real direct-contact links require approved business details.
+
+Instructions for user review:
+1. Open the live Contact page on phone and desktop.
+2. Try submitting empty and invalid values and confirm each error is clear.
+3. Complete a valid enquiry and review the prepared summary and copy action.
+4. Supply the approved phone, WhatsApp number, email, Instagram URL and preferred form-delivery service when ready.
+5. Approve Phase 9’s interface or list the required wording/field changes.
+
+User requested changes:
+- None yet.
 
 User approval:
 PENDING

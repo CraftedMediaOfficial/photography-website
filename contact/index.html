@@ -1,1 +1,114 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Contact Crafted Media." /><title>Crafted Media | Contact</title><link rel="stylesheet" href="../style.css" /><script src="../app.js" defer></script></head><body data-page="contact" data-base="../"><a class="skip-link" href="#main-content">Skip to content</a><main id="main-content" tabindex="-1"><section class="placeholder" aria-labelledby="page-title"><p class="eyebrow">Contact</p><h1 id="page-title">Let’s create something lasting</h1><p>Contact details and the enquiry experience will be added in a dedicated future phase.</p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Enquire with Crafted Media about wedding, event, portrait, commercial photography and cinematography coverage." />
+    <title>Contact &amp; Enquiry | Crafted Media</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../app.js" defer></script>
+    <script type="module" src="contact.js"></script>
+  </head>
+  <body data-page="contact" data-base="../">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content" tabindex="-1">
+      <section class="contact-hero section--peacock" aria-labelledby="contact-title">
+        <div class="container contact-hero__inner" data-reveal>
+          <p class="eyebrow">Start a conversation</p>
+          <h1 id="contact-title">Tell us what you’re planning.</h1>
+          <p>Share the essentials below. We’ll use them to understand the date, place, coverage and kind of story you need.</p>
+          <a class="button button--light" href="#enquiry">Prepare your enquiry</a>
+        </div>
+      </section>
+
+      <section class="section section--ivory contact-methods-section" aria-labelledby="contact-methods-title">
+        <div class="container">
+          <div class="contact-methods__heading" data-reveal><div><p class="eyebrow">Direct contact</p><h2 id="contact-methods-title">Choose the channel that suits you.</h2></div><p>Business phone, WhatsApp, Instagram and email details will activate here after owner approval.</p></div>
+          <div class="contact-methods" data-contact-methods aria-live="polite"><p>Contact methods are loading.</p></div>
+        </div>
+      </section>
+
+      <section class="section section--white enquiry-section" id="enquiry" aria-labelledby="enquiry-title">
+        <div class="container enquiry-layout">
+          <div class="enquiry-introduction" data-reveal>
+            <p class="eyebrow">Project details</p>
+            <h2 id="enquiry-title">A useful enquiry starts with context.</h2>
+            <p>Required fields are marked. Exact pricing and availability are confirmed only after the project is reviewed.</p>
+            <div class="enquiry-privacy"><h3>Privacy note</h3><p>Until an approved delivery service is configured, your answers stay in this browser and are not transmitted or stored by Crafted Media.</p></div>
+          </div>
+
+          <form class="enquiry-form" data-enquiry-form novalidate>
+            <div class="field">
+              <label for="enquiry-name">Name <span aria-hidden="true">*</span></label>
+              <input id="enquiry-name" name="name" type="text" autocomplete="name" required aria-describedby="enquiry-name-error" />
+              <p class="field__error" id="enquiry-name-error" hidden></p>
+            </div>
+            <div class="enquiry-form__two">
+              <div class="field">
+                <label for="enquiry-phone">Phone / WhatsApp Number <span aria-hidden="true">*</span></label>
+                <input id="enquiry-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="enquiry-phone-error" />
+                <p class="field__error" id="enquiry-phone-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="enquiry-email">Email <span aria-hidden="true">*</span></label>
+                <input id="enquiry-email" name="email" type="email" autocomplete="email" required aria-describedby="enquiry-email-error" />
+                <p class="field__error" id="enquiry-email-error" hidden></p>
+              </div>
+            </div>
+            <div class="enquiry-form__two">
+              <div class="field">
+                <label for="enquiry-type">Event Type <span aria-hidden="true">*</span></label>
+                <select id="enquiry-type" name="eventType" required aria-describedby="enquiry-type-error"><option value="">Select an event</option></select>
+                <p class="field__error" id="enquiry-type-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="enquiry-date">Event Date <span aria-hidden="true">*</span></label>
+                <input id="enquiry-date" name="eventDate" type="date" required aria-describedby="enquiry-date-error" />
+                <p class="field__error" id="enquiry-date-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="enquiry-location">City / Location <span aria-hidden="true">*</span></label>
+              <input id="enquiry-location" name="location" type="text" autocomplete="address-level2" required aria-describedby="enquiry-location-error" />
+              <p class="field__error" id="enquiry-location-error" hidden></p>
+            </div>
+            <div class="enquiry-form__two">
+              <div class="field">
+                <label for="enquiry-budget">Approximate Budget <span aria-hidden="true">*</span></label>
+                <select id="enquiry-budget" name="budget" required aria-describedby="enquiry-budget-error"><option value="">Select a range</option></select>
+                <p class="field__error" id="enquiry-budget-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="enquiry-coverage">Coverage Needed <span aria-hidden="true">*</span></label>
+                <select id="enquiry-coverage" name="coverage" required aria-describedby="enquiry-coverage-error"><option value="">Select coverage</option></select>
+                <p class="field__error" id="enquiry-coverage-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="enquiry-message">Tell us about your event or vision <span aria-hidden="true">*</span></label>
+              <textarea id="enquiry-message" name="message" rows="6" required aria-describedby="enquiry-message-hint enquiry-message-error"></textarea>
+              <p class="field__hint" id="enquiry-message-hint">Include the schedule, priorities or intended use if known.</p>
+              <p class="field__error" id="enquiry-message-error" hidden></p>
+            </div>
+            <div class="contact-honeypot" aria-hidden="true"><label for="enquiry-company">Leave this field empty</label><input id="enquiry-company" name="company" type="text" tabindex="-1" autocomplete="off" /></div>
+            <button class="button button--primary enquiry-form__submit" type="submit">Prepare enquiry draft</button>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section section--ivory enquiry-result" data-enquiry-result hidden tabindex="-1" aria-labelledby="result-title">
+        <div class="container enquiry-result__inner">
+          <div><p class="eyebrow">Enquiry summary</p><h2 id="result-title" data-result-title>Your enquiry draft is ready.</h2><p data-result-copy>Nothing has been sent or stored.</p></div>
+          <pre data-enquiry-draft tabindex="0"></pre>
+          <div class="enquiry-result__actions">
+            <button class="button button--primary" type="button" data-copy-enquiry>Copy enquiry</button>
+            <a class="button button--secondary" data-whatsapp-link hidden target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
+            <a class="button button--secondary" data-email-link hidden>Email enquiry</a>
+            <button class="text-link enquiry-result__new" type="button" data-new-enquiry>Start a new enquiry</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

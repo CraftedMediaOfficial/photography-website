@@ -5,6 +5,7 @@ import { portfolioCategories, publishedPortfolioCategories } from "../data/portf
 import { portfolioAlbums, publishedPortfolioAlbums } from "../data/portfolio-albums.mjs";
 import { films, publishedFilms } from "../data/films.mjs";
 import { faqs, plannedLocationPages, serviceAreas, serviceGroups } from "../data/services.mjs";
+import { budgetRanges, contactConfig, coverageOptions, eventTypes } from "../data/contact.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -116,6 +117,15 @@ async function verify() {
   const servicesScript = await fs.readFile(resolve(root, "services/services.js"), "utf8");
   for (const behavior of ["document.createElement(\"details\")", "document.createElement(\"summary\")", "textContent", "visibility === \"published\""]) if (!servicesScript.includes(behavior)) throw new Error(`Accessible service behavior ${behavior} is missing.`);
   for (const faqStyle of [".faq-item summary:focus-visible", "min-height: 4rem", ".faq-item[open] summary::after"]) if (!css.includes(faqStyle)) throw new Error(`FAQ accessibility style ${faqStyle} is missing.`);
-  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 galleries, Phase 7 films and Phase 8 services, nine accessible FAQs, location/SEO structure, CTAs and image-free Phase 8 presentation.`);
+  const contactPage = await fs.readFile(resolve(root, "contact/index.html"), "utf8");
+  for (const marker of ["contact-hero", "data-contact-methods", "data-enquiry-form", "novalidate", "data-form-status", "data-enquiry-result", "data-whatsapp-link", "data-email-link", "data-copy-enquiry", "contact.js"]) if (!contactPage.includes(marker)) throw new Error(`Phase 9 Contact page is missing ${marker}.`);
+  for (const field of ["name", "phone", "email", "eventType", "eventDate", "location", "budget", "coverage", "message", "company"]) if (!contactPage.includes(`name="${field}"`)) throw new Error(`Phase 9 form field ${field} is missing.`);
+  if (eventTypes.length !== 10 || budgetRanges.length !== 6 || JSON.stringify(coverageOptions) !== JSON.stringify(["Photography", "Cinematography", "Both"])) throw new Error("Phase 9 enquiry options are incomplete.");
+  if (contactConfig.formEndpoint || contactConfig.phone || contactConfig.whatsappNumber || contactConfig.email || contactConfig.instagramUrl) throw new Error("Unapproved production contact configuration must remain unset.");
+  const contactScript = await fs.readFile(resolve(root, "contact/contact.js"), "utf8");
+  for (const behavior of ["validateField", "aria-invalid", "Choose today or a future date", "buildDraft", "buildWhatsAppUrl", "sendEnquiry", "response.ok", "submitting", "lastFingerprint", "company", "navigator.clipboard", "noopener noreferrer", "Nothing has been sent or stored"]) if (!contactScript.includes(behavior)) throw new Error(`Phase 9 enquiry behavior ${behavior} is missing.`);
+  for (const formStyle of [".enquiry-form__two", ".field__error", '[aria-invalid="true"]', ".contact-honeypot", ".form-status--error", ".enquiry-result pre"]) if (!css.includes(formStyle)) throw new Error(`Phase 9 form style ${formStyle} is missing.`);
+  if (!css.includes('[hidden] { display: none !important; }')) throw new Error("Hidden contact actions must remain visually hidden until configured.");
+  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phases 6–8 regressions and Phase 9 enquiry fields, validation, spam/double-submit controls, draft confirmation, safe contact hooks and static-hosting fallback.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });
