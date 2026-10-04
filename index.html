@@ -8,6 +8,7 @@
     <link rel="preload" href="assets/images/home-hero.webp" as="image" type="image/webp" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
+    <script type="module" src="home.js"></script>
   </head>
   <body data-page="home" data-base="./">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -53,7 +54,7 @@
       <section class="section section--peacock selected-work" aria-labelledby="work-title">
         <div class="container">
           <div class="section-heading" data-reveal><p class="eyebrow">Selected work</p><h2 id="work-title">Stories of people, occasions and purpose.</h2><p>A curated entry into the work we create most—each with its own pace, atmosphere and visual language.</p></div>
-          <div class="work-grid">
+          <div class="work-grid" data-home-featured>
             <a class="work-card" href="portfolio/" data-reveal><span class="work-card__number">01</span><span class="work-card__title">Weddings</span><span class="work-card__description">Emotion-led celebrations, from quiet rituals to joyful dance floors.</span></a>
             <a class="work-card" href="portfolio/" data-reveal><span class="work-card__number">02</span><span class="work-card__title">Events</span><span class="work-card__description">Cultural, family and corporate occasions documented with clarity.</span></a>
             <a class="work-card" href="portfolio/" data-reveal><span class="work-card__number">03</span><span class="work-card__title">Brands</span><span class="work-card__description">Considered photography for products, food, people and campaigns.</span></a>
@@ -89,7 +90,7 @@
       <section class="section section--white kind-words" aria-labelledby="words-title">
         <div class="container kind-words__grid">
           <div data-reveal><p class="eyebrow">Kind words</p><h2 id="words-title">The experience matters as much as the images.</h2></div>
-          <div class="kind-words__placeholder" data-reveal><p>Client stories and verified testimonials will be introduced here as the Crafted Media collection grows.</p><span>Testimonials preview</span></div>
+          <div class="kind-words__placeholder" data-home-testimonials data-reveal><p>Client stories and verified testimonials will be introduced here as the Crafted Media collection grows.</p><span>Testimonials preview</span></div>
         </div>
       </section>
 

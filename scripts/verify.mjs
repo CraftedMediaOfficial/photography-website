@@ -6,6 +6,7 @@ import { portfolioAlbums, publishedPortfolioAlbums } from "../data/portfolio-alb
 import { films, publishedFilms } from "../data/films.mjs";
 import { faqs, plannedLocationPages, serviceAreas, serviceGroups } from "../data/services.mjs";
 import { budgetRanges, contactConfig, coverageOptions, eventTypes } from "../data/contact.mjs";
+import { homepageFeatured, testimonials } from "../data/editorial.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -126,6 +127,16 @@ async function verify() {
   for (const behavior of ["validateField", "aria-invalid", "Choose today or a future date", "buildDraft", "buildWhatsAppUrl", "sendEnquiry", "response.ok", "submitting", "lastFingerprint", "company", "navigator.clipboard", "noopener noreferrer", "Nothing has been sent or stored"]) if (!contactScript.includes(behavior)) throw new Error(`Phase 9 enquiry behavior ${behavior} is missing.`);
   for (const formStyle of [".enquiry-form__two", ".field__error", '[aria-invalid="true"]', ".contact-honeypot", ".form-status--error", ".enquiry-result pre"]) if (!css.includes(formStyle)) throw new Error(`Phase 9 form style ${formStyle} is missing.`);
   if (!css.includes('[hidden] { display: none !important; }')) throw new Error("Hidden contact actions must remain visually hidden until configured.");
-  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phases 6–8 regressions and Phase 9 enquiry fields, validation, spam/double-submit controls, draft confirmation, safe contact hooks and static-hosting fallback.`);
+  const homeScript = await fs.readFile(resolve(root, "home.js"), "utf8");
+  for (const marker of ["homepageFeatured", "testimonials", "publishedPortfolioCategories", "data-home-featured", "data-home-testimonials"]) {
+    if (!homeScript.includes(marker) && !home.includes(marker)) throw new Error(`Phase 10 homepage content behavior ${marker} is missing.`);
+  }
+  if (!Array.isArray(homepageFeatured) || homepageFeatured.length > 3 || homepageFeatured.some((slug) => !portfolioCategories.some((category) => category.slug === slug))) throw new Error("Phase 10 homepage feature selection is invalid.");
+  if (!Array.isArray(testimonials)) throw new Error("Phase 10 testimonials content must be a list.");
+  const buildScript = await fs.readFile(resolve(root, "scripts/build.mjs"), "utf8");
+  if (!buildScript.includes('"content-studio"') || !buildScript.includes('"docs"')) throw new Error("Private Content Studio resources must be excluded from the public build.");
+  const studioServer = await fs.readFile(resolve(root, "scripts/content-studio.mjs"), "utf8");
+  for (const security of ["127.0.0.1", "randomBytes(32)", "request.headers.authorization", "Cross-origin request rejected", "Content-Security-Policy"]) if (!studioServer.includes(security)) throw new Error(`Phase 10 Content Studio security control ${security} is missing.`);
+  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phases 6–9 regressions and Phase 10 managed homepage content, private-studio build isolation and security controls.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });

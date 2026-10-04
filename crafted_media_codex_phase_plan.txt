@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 9
+Current Active Phase: PHASE 10
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 8
+Last Approved Phase: PHASE 9
 
 Last Updated By Codex: Codex
 
@@ -115,7 +115,8 @@ Last Update:
 - Phase 6 album architecture, premium gallery experience and mobile corrections approved by the user.
 - Phase 7 films and cinematography experience approved by the user.
 - Phase 8 services, FAQ, location and trust experience approved by the user.
-- Phase 9 contact and enquiry experience completed and awaiting user review and production contact configuration.
+- Phase 9 contact and enquiry experience approved by the user; production delivery configuration remains intentionally unset.
+- Phase 10 local, Git-backed Content Studio completed and awaiting user review and architecture approval.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -126,7 +127,8 @@ User Review Notes:
 - User approved Phase 6 and requested Phase 7 implementation and live deployment.
 - User approved Phase 7 and requested Phase 8 implementation and live deployment without generating new images.
 - User approved Phase 8 and requested Phase 9 implementation and live deployment.
-- Phase 9 must be reviewed on the live website before approval; production delivery remains disabled until approved contact details or a form service are supplied.
+- User approved Phase 9 and requested Phase 10 implementation.
+- Phase 10 architecture uses a zero-cost localhost editor with GitHub authorization as the production publishing boundary; review is required before production content-management use.
 
 
 ======================================================================
@@ -620,7 +622,7 @@ User reviews business information and service clarity.
 PHASE 9 — CONTACT + ENQUIRY + WHATSAPP CONVERSION
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Turn portfolio visitors into qualified enquiries.
@@ -702,7 +704,7 @@ configuration.
 PHASE 10 — CONTENT MANAGEMENT / ADMIN V1
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Allow owner to manage portfolio content without editing source code.
@@ -1197,6 +1199,19 @@ Format:
 - Added a honeypot, minimum completion time, in-flight lock and duplicate-draft protection.
 - Added optional approved endpoint submission with success and failure states while leaving all unapproved production contact settings unset.
 - Mobile/desktop browser, validation, draft, duplicate, no-overflow and production build checks passed.
+- User approval status: PENDING.
+
+[2026-10-04] Phase 9 Approval
+- User approved the live Phase 9 enquiry interface and requested Phase 10.
+- Production contact delivery remains disabled until approved business details or a form endpoint are supplied.
+- User approval status: APPROVED.
+
+[2026-10-04] Phase 10
+- Added a localhost-only Content Studio for categories, albums/photos, films, testimonials, About/team, contact/social settings and homepage feature selection.
+- Added owner-image ingestion, draft/published/hidden states, ordering, validation and atomic persistence into the existing portable data modules.
+- Kept GitHub Pages unchanged and excluded the editor from the public build; fresh session-token authorization, loopback binding, origin checks and GitHub push permissions protect writes.
+- Added a zero-cost architecture guide, owner workflow and recovery instructions; no paid CMS or vendor account was selected.
+- Public regression/build, token authorization, CRUD, invalid input, ordering, visibility, feature selection, persistence, upload protection and phone/desktop browser checks passed.
 - User approval status: PENDING.
 
 ------------------------------------------------------------
@@ -1799,7 +1814,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 9 — CONTACT + ENQUIRY + WHATSAPP CONVERSION
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-04
 
@@ -1866,6 +1881,93 @@ Instructions for user review:
 
 User requested changes:
 - None yet.
+
+User approval:
+APPROVED — user approved Phase 9 and requested Phase 10 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 10 — CONTENT MANAGEMENT / ADMIN V1
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-04
+
+What was implemented:
+- Added a simple responsive Content Studio covering portfolio categories, albums, photographs, films, testimonials, About/team, contact/social links and homepage featured work.
+- Added create, edit, remove, replace, category movement, ordering, cover selection and Draft/Published/Hidden controls.
+- Added owner-image ingestion for JPG, PNG, WebP and AVIF files up to 20 MB without generating any imagery.
+- Connected homepage selected work and testimonials to the managed content model.
+- Added content validation and atomic data-file persistence.
+
+Files added:
+- content-studio/index.html
+- content-studio/studio.css
+- content-studio/studio.js
+- data/editorial.mjs
+- docs/content-management.md
+- home.js
+- scripts/content-store.mjs
+- scripts/content-studio.mjs
+- scripts/verify-content-studio.mjs
+
+Files modified:
+- README.md
+- index.html
+- package.json
+- scripts/build.mjs
+- scripts/verify.mjs
+- style.css
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Preserved static GitHub Pages hosting and chose a local Git-backed editor, avoiding an unapproved paid CMS or hosting migration.
+- Bound the write server to 127.0.0.1 and protected every API operation with a fresh 256-bit session token.
+- Added same-origin write enforcement, restrictive browser security headers, input validation and path-controlled uploads.
+- Excluded the Content Studio and its documentation from the public dist build; GitHub repository permissions remain the production publishing authorization boundary.
+- Kept content in portable JavaScript data modules and Git history for audit, review and rollback.
+
+Tests executed:
+- Existing public-site Node regression suite and production build.
+- Dedicated Content Studio authorization, CRUD, validation, ordering, visibility, homepage-selection, persistence and protected-upload suite.
+- Headless Chromium checks for the Content Studio and data-driven homepage at a 390px mobile viewport.
+- Public-build isolation check for editor and private documentation directories.
+
+Test results:
+- PASS: Unauthenticated content reads, writes and image uploads are rejected.
+- PASS: Authenticated content reads, valid updates and supported image ingestion succeed.
+- PASS: Invalid duplicate slugs are rejected without replacing content.
+- PASS: photo ordering, Draft/Published/Hidden states, About changes, testimonials and homepage selections persist.
+- PASS: all eight Content Studio sections render without horizontal mobile overflow.
+- PASS: the homepage renders three managed featured categories with correct routes and no mobile overflow.
+- PASS: Content Studio and docs are absent from the public production build.
+- PASS: Phase 1–9 public regressions and production build complete successfully.
+
+Known issues / limitations:
+- The V1 editor runs on the owner's computer and requires Node.js, a local repository clone and GitHub push access.
+- Saving is intentionally local; the owner reviews, tests, commits and pushes changes before GitHub Pages publishes them.
+- Phase 11 will add automatic image resizing/compression and large-library ingestion; Phase 10 only copies approved owner files.
+- A remote browser admin usable from any device would require a separately approved authenticated CMS/backend and possibly a hosting/cost change.
+
+Items intentionally deferred:
+- No paid vendor, remote database, OAuth application or serverless backend was selected without user approval.
+- Automatic image derivatives, compression and 500+ image performance belong to Phase 11.
+
+Instructions for user review:
+1. Clone or pull the repository on a computer with Node.js 20+.
+2. Run npm run admin and open the exact private URL shown in the terminal.
+3. Try a draft category/album, reorder an item, add an owner image and save.
+4. Run npm test and npm run build, then review with npm start.
+5. Confirm the local Git-backed approach or request a remote CMS comparison before approving Phase 10.
+
+User requested changes:
+- Do not generate images; Phase 10 only accepts images supplied by the owner.
 
 User approval:
 PENDING

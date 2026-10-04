@@ -201,6 +201,9 @@ main { min-width: 0; flex: 1; display: grid; }
 .kind-words__placeholder { border-left: 1px solid var(--color-gold); padding: var(--space-4) 0 var(--space-4) var(--space-6); }
 .kind-words__placeholder p { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.25; }
 .kind-words__placeholder span { color: var(--color-charcoal-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.kind-words__placeholder blockquote { margin: 0 0 var(--space-5); }
+.kind-words__placeholder blockquote:last-child { margin-block-end: 0; }
+.kind-words__placeholder blockquote footer { color: var(--color-charcoal-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: .06em; }
 .social-teaser__inner { display: grid; gap: var(--space-5); align-items: end; }
 .social-teaser h2 { margin-block-end: 0; }
 .social-teaser__inner > p { margin-block-end: 0; color: var(--color-charcoal-soft); }

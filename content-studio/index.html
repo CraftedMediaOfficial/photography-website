@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crafted Media Content Studio</title>
+    <link rel="stylesheet" href="studio.css" />
+    <script src="studio.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div><p class="eyebrow">Crafted Media</p><h1>Content Studio</h1><p>Private, local content management for the public website.</p></div>
+      <div class="actions"><span class="status" data-status>Connecting…</span><button class="primary" type="button" data-save disabled>Save changes</button></div>
+    </header>
+    <main>
+      <aside aria-label="Content sections">
+        <a href="#featured">Homepage</a><a href="#categories">Categories</a><a href="#albums">Albums &amp; photos</a><a href="#films">Films</a><a href="#testimonials">Testimonials</a><a href="#about">About &amp; team</a><a href="#contact">Contact &amp; social</a><a href="#assets">Add image</a>
+      </aside>
+      <div class="workspace">
+        <div class="notice"><strong>Draft safely.</strong> Save writes validated source files locally. Run the website tests, review locally, then commit and push to publish through GitHub Pages.</div>
+        <div data-content aria-live="polite"></div>
+      </div>
+    </main>
+    <template id="empty-template"><p class="empty">Nothing here yet.</p></template>
+  </body>
+</html>
