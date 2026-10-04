@@ -4,7 +4,7 @@ import { dirname, join, resolve } from "node:path";
 import { generatePortfolioPages } from "./generate-portfolio-pages.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = resolve(root, "dist");
-const excluded = new Set([".git", ".github", ".openai", "content-studio", "dist", "docs", "node_modules"]);
+const excluded = new Set([".git", ".github", ".openai", "_content-studio", "_docs", "dist", "node_modules"]);
 
 async function copy(source, destination) {
   const details = await fs.stat(source);

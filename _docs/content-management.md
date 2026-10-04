@@ -10,7 +10,7 @@ This is a deliberate V1 architecture:
 - Hosting: no migration; GitHub Pages and the custom domain stay unchanged.
 - Authorization: the server listens only on `127.0.0.1`, generates a new 256-bit session token every time, requires that token for every read/write/upload API call, rejects cross-origin writes, and sends restrictive browser security headers.
 - Publishing control: saving updates local source files only. GitHub access controls who may push, and Git history provides review, rollback, and an audit trail.
-- Public exposure: `content-studio/` and `docs/` are excluded from `dist/`. No editor, write API, token, credential, or secret is deployed to GitHub Pages.
+- Public exposure: `_content-studio/` and `_docs/` are excluded from `dist/` and from GitHub Pages' secondary Jekyll build. No editor, write API, token, credential, or secret is deployed to the website.
 - Vendor lock-in: none. Content stays in the repository's portable JavaScript data modules.
 
 The tradeoff is that the owner needs a local clone, Node.js 20+, and GitHub push access. A browser editor usable from any device would require an authenticated Git-based/headless CMS or serverless backend. That is a separate architecture and cost decision; Phase 10 does not silently enroll the project in one.

@@ -14,7 +14,7 @@ Run `npm run test` followed by `npm run build`. The production-ready static file
 
 Run `npm run admin` and open the one-time local URL printed in the terminal. The Content Studio manages portfolio categories, albums and photos, films, homepage features, testimonials, About/team, and contact/social settings without hand-editing source files. It is bound to localhost, protected by a fresh session token, and excluded from the public build.
 
-Saving is local. Run the tests, review the site, then commit and push approved content through GitHub. See `docs/content-management.md` for the complete owner workflow, security model, and recovery steps.
+Saving is local. Run the tests, review the site, then commit and push approved content through GitHub. See `_docs/content-management.md` for the complete owner workflow, security model, and recovery steps.
 
 ## Deploy
 

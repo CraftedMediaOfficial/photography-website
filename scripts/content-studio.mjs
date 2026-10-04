@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { loadContent, saveContent } from "./content-store.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const studioRoot = join(projectRoot, "content-studio");
+const studioRoot = join(projectRoot, "_content-studio");
 const mediaTypes = new Map([[".html", "text/html; charset=utf-8"], [".css", "text/css; charset=utf-8"], [".js", "text/javascript; charset=utf-8"]]);
 const uploadTypes = new Map([["image/jpeg", ".jpg"], ["image/png", ".png"], ["image/webp", ".webp"], ["image/avif", ".avif"]]);
 

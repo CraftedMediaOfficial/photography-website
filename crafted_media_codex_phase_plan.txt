@@ -1907,11 +1907,11 @@ What was implemented:
 - Added content validation and atomic data-file persistence.
 
 Files added:
-- content-studio/index.html
-- content-studio/studio.css
-- content-studio/studio.js
+- _content-studio/index.html
+- _content-studio/studio.css
+- _content-studio/studio.js
 - data/editorial.mjs
-- docs/content-management.md
+- _docs/content-management.md
 - home.js
 - scripts/content-store.mjs
 - scripts/content-studio.mjs
@@ -1930,7 +1930,7 @@ Architecture/technical decisions:
 - Preserved static GitHub Pages hosting and chose a local Git-backed editor, avoiding an unapproved paid CMS or hosting migration.
 - Bound the write server to 127.0.0.1 and protected every API operation with a fresh 256-bit session token.
 - Added same-origin write enforcement, restrictive browser security headers, input validation and path-controlled uploads.
-- Excluded the Content Studio and its documentation from the public dist build; GitHub repository permissions remain the production publishing authorization boundary.
+- Excluded the Content Studio and its documentation from the public dist build and the secondary Jekyll Pages path; GitHub repository permissions remain the production publishing authorization boundary.
 - Kept content in portable JavaScript data modules and Git history for audit, review and rollback.
 
 Tests executed:

@@ -134,7 +134,7 @@ async function verify() {
   if (!Array.isArray(homepageFeatured) || homepageFeatured.length > 3 || homepageFeatured.some((slug) => !portfolioCategories.some((category) => category.slug === slug))) throw new Error("Phase 10 homepage feature selection is invalid.");
   if (!Array.isArray(testimonials)) throw new Error("Phase 10 testimonials content must be a list.");
   const buildScript = await fs.readFile(resolve(root, "scripts/build.mjs"), "utf8");
-  if (!buildScript.includes('"content-studio"') || !buildScript.includes('"docs"')) throw new Error("Private Content Studio resources must be excluded from the public build.");
+  if (!buildScript.includes('"_content-studio"') || !buildScript.includes('"_docs"')) throw new Error("Private Content Studio resources must be excluded from the public build.");
   const studioServer = await fs.readFile(resolve(root, "scripts/content-studio.mjs"), "utf8");
   for (const security of ["127.0.0.1", "randomBytes(32)", "request.headers.authorization", "Cross-origin request rejected", "Content-Security-Policy"]) if (!studioServer.includes(security)) throw new Error(`Phase 10 Content Studio security control ${security} is missing.`);
   console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phases 6–9 regressions and Phase 10 managed homepage content, private-studio build isolation and security controls.`);
