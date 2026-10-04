@@ -1,8 +1,8 @@
 export const contactConfig = {
-  phone: null,
-  whatsappNumber: null,
-  email: null,
-  instagramUrl: null,
+  phone: "+917558736585",
+  whatsappNumber: "+917558736585",
+  email: "CinematicNamrata@gmail.com",
+  instagramUrl: "https://www.instagram.com/crafted_media_official/",
   formEndpoint: null
 };
 
@@ -29,4 +29,3 @@ export const budgetRanges = [
 ];
 
 export const coverageOptions = ["Photography", "Cinematography", "Both"];
-

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_content-studio/
+Disallow: /_docs/
+Disallow: /_media-originals/
+
+Sitemap: https://craftedmedia.co.in/sitemap.xml

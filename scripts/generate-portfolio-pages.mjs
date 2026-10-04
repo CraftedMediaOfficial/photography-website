@@ -8,9 +8,13 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const portfolioRoot = join(projectRoot, "portfolio");
 const manifestPath = join(portfolioRoot, ".generated-pages.json");
 const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const siteUrl = "https://craftedmedia.co.in";
+const socialImage = `${siteUrl}/assets/images/library/home-hero-a960548e1ef1/home-hero-1536.webp`;
+const jsonLd = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
 
 function categoryPage(category) {
   const albums = getPublishedAlbumsForCategory(category.slug);
+  const canonical = `${siteUrl}/portfolio/${category.slug}/`;
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -18,6 +22,10 @@ function categoryPage(category) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${escapeHtml(category.description)}" />
     <title>${escapeHtml(category.name)} | Crafted Media Portfolio</title>
+    <link rel="canonical" href="${canonical}" />
+    <meta property="og:type" content="website" /><meta property="og:site_name" content="Crafted Media" /><meta property="og:title" content="${escapeHtml(category.name)} | Crafted Media Portfolio" /><meta property="og:description" content="${escapeHtml(category.description)}" /><meta property="og:url" content="${canonical}" /><meta property="og:image" content="${socialImage}" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="${escapeHtml(category.name)} | Crafted Media Portfolio" /><meta name="twitter:description" content="${escapeHtml(category.description)}" /><meta name="twitter:image" content="${socialImage}" />
+    <script type="application/ld+json">${jsonLd({"@context":"https://schema.org","@type":"CollectionPage",name:category.name,url:canonical,description:category.description,isPartOf:{"@type":"WebSite",name:"Crafted Media",url:siteUrl}})}</script>
     <link rel="stylesheet" href="../../style.css" />
     <script src="../../app.js" defer></script>
     <script type="module" src="../portfolio.js"></script>
@@ -47,6 +55,7 @@ function categoryPage(category) {
 }
 
 function albumPage(album, category) {
+  const canonical = `${siteUrl}/portfolio/${category.slug}/${album.slug}/`;
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -54,6 +63,10 @@ function albumPage(album, category) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${escapeHtml(album.description)}" />
     <title>${escapeHtml(album.name)} | Crafted Media</title>
+    <link rel="canonical" href="${canonical}" />
+    <meta property="og:type" content="article" /><meta property="og:site_name" content="Crafted Media" /><meta property="og:title" content="${escapeHtml(album.name)} | Crafted Media" /><meta property="og:description" content="${escapeHtml(album.description)}" /><meta property="og:url" content="${canonical}" /><meta property="og:image" content="${socialImage}" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="${escapeHtml(album.name)} | Crafted Media" /><meta name="twitter:description" content="${escapeHtml(album.description)}" /><meta name="twitter:image" content="${socialImage}" />
+    <script type="application/ld+json">${jsonLd({"@context":"https://schema.org","@type":"ImageGallery",name:album.name,url:canonical,description:album.description,isPartOf:{"@type":"CollectionPage",name:category.name,url:`${siteUrl}/portfolio/${category.slug}/`}})}</script>
     <link rel="stylesheet" href="../../../style.css" />
     <script src="../../../app.js" defer></script>
     <script type="module" src="../../gallery.js"></script>

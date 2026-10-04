@@ -22,6 +22,10 @@ Content Studio automatically creates responsive WebP and AVIF sizes, a thumbnail
 
 See `_docs/image-workflow.md` for the complete upload, quality, publishing and recovery workflow. Phase 11 measurements are recorded in `_docs/phase11-performance.md`.
 
+## SEO and analytics
+
+The site publishes canonical URLs, OpenGraph/Twitter sharing metadata, structured business/page data, `sitemap.xml` and `robots.txt`. Google Analytics is intentionally deferred; no visitor tracking is active until it is separately approved.
+
 ## Deploy
 
 The included GitHub Actions workflow publishes `dist/` to GitHub Pages when changes are pushed to `main`. In repository settings, set **Pages → Source** to **GitHub Actions** once. A custom domain can be configured in that same Pages settings screen and is independent of this source structure.

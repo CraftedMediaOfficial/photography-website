@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 11
+Current Active Phase: PHASE 12
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 10
+Last Approved Phase: PHASE 11
 
 Last Updated By Codex: Codex
 
@@ -117,7 +117,8 @@ Last Update:
 - Phase 8 services, FAQ, location and trust experience approved by the user.
 - Phase 9 contact and enquiry experience approved by the user; production delivery configuration remains intentionally unset.
 - Phase 10 local, Git-backed Content Studio and architecture approved by the user.
-- Phase 11 responsive image pipeline and 500+ image performance work completed and awaiting user review.
+- Phase 11 responsive image pipeline and 500+ image performance work approved by the user.
+- Phase 12 SEO and social-sharing foundation completed; analytics intentionally deferred per user decision and awaiting review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -130,6 +131,7 @@ User Review Notes:
 - User approved Phase 8 and requested Phase 9 implementation and live deployment.
 - User approved Phase 9 and requested Phase 10 implementation.
 - User approved the Phase 10 zero-cost local Content Studio architecture and requested Phase 11.
+- User approved Phase 11 and requested Phase 12; Google Analytics is intentionally deferred for now.
 
 
 ======================================================================
@@ -778,7 +780,7 @@ Architecture/cost implications must be approved before production use.
 PHASE 11 — IMAGE PIPELINE + 500+ IMAGE PERFORMANCE
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Ensure the website remains fast with a large photography library.
@@ -833,7 +835,7 @@ User compares visual quality vs speed on phone and desktop.
 PHASE 12 — SEO + SOCIAL SHARING + ANALYTICS
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Make Crafted Media discoverable and measurable.
@@ -1225,6 +1227,18 @@ Format:
 - Added 18-frame progressive gallery batches, a 25-thumbnail lightbox window, lazy loading, decoding hints, broken-image fallbacks and off-screen containment for 500-photo scalability.
 - Kept full-resolution working originals local and outside Git/public builds; no imagery was generated or invented.
 - Added automated pipeline/metadata/compression/500-image tests and a throttled mobile report for homepage, category and album pages.
+- User approval status: PENDING.
+
+[2026-10-04] Phase 11 Approval
+- User approved the live responsive image pipeline and 500+ image performance work and requested Phase 12.
+- User approval status: APPROVED.
+
+[2026-10-04] Phase 12
+- Added canonical URLs, unique metadata, OpenGraph/Twitter sharing tags and structured page/business data across public routes and generated portfolio pages.
+- Added sitemap.xml, robots.txt and clean canonical portfolio/album URLs for search engines and social crawlers.
+- Activated the approved phone, WhatsApp, email and normalized Instagram contact links.
+- Kept Google Analytics disabled and documented as deferred until the owner requests integration.
+- Added metadata, structured-data, sitemap, robots, contact-link and analytics-deferral tests.
 - User approval status: PENDING.
 
 ------------------------------------------------------------
@@ -1995,7 +2009,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 11 — IMAGE PIPELINE + 500+ IMAGE PERFORMANCE
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-04
 
@@ -2082,6 +2096,95 @@ Instructions for user review:
 
 User requested changes:
 - Do not generate images; implemented only deterministic derivatives of existing or owner-supplied photography.
+
+User approval:
+APPROVED — user approved Phase 11 and requested Phase 12 implementation.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 12 — SEO + SOCIAL SHARING + ANALYTICS
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-04
+
+What was implemented:
+- Added canonical URLs, unique metadata, OpenGraph and Twitter sharing metadata for Home, About, Portfolio, Films, Services, Contact and generated category/album pages.
+- Added reusable structured data for ProfessionalService, AboutPage, CollectionPage, ImageGallery and ContactPage contexts.
+- Added `sitemap.xml` covering all currently published public routes.
+- Added `robots.txt` with sitemap discovery and private-path exclusions.
+- Activated owner-approved Phone, WhatsApp, email and Instagram links throughout the contact workflow.
+- Added content-accurate social preview images using existing optimized photography derivatives.
+- Kept Google Analytics disabled by explicit owner choice; no visitor tracking script or cookies were added.
+
+Files added:
+- robots.txt
+- sitemap.xml
+- scripts/verify-seo.mjs
+
+Files modified:
+- README.md
+- about/index.html
+- contact/index.html
+- data/contact.mjs
+- films/index.html
+- index.html
+- package.json
+- portfolio/index.html
+- scripts/generate-portfolio-pages.mjs
+- scripts/verify.mjs
+- services/index.html
+- crafted_media_codex_phase_plan.txt
+- generated portfolio category and album pages
+
+Architecture/technical decisions:
+- Used the canonical public domain `https://craftedmedia.co.in/` as the sole site origin.
+- Kept metadata server-renderable in HTML so search engines and social crawlers do not depend on JavaScript execution.
+- Reused approved, content-hashed WebP photography for social previews; no new imagery was generated.
+- Structured data avoids invented address, review, price or opening-hour claims because those details were not supplied.
+- Google Analytics remains intentionally deferred; no analytics provider, measurement ID, cookie banner or tracking event code was added.
+
+Tests executed:
+- Full Phase 1–11 Node regression, image-pipeline and production build suite.
+- Title, description, canonical, OpenGraph, Twitter and JSON-LD validation across 15 public routes.
+- Sitemap-to-canonical URL validation and robots exclusion checks.
+- Contact configuration safety and approved-link validation.
+- Headless Chromium checks across Home, About, Portfolio, category, album, Films, Services and Contact at mobile width.
+- Live metadata, contact-link and no-overflow smoke checks after deployment.
+
+Test results:
+- PASS: every public route has a unique title, useful description and absolute canonical URL.
+- PASS: every public route has OpenGraph/Twitter title, description and image metadata.
+- PASS: structured data parses as valid JSON on all checked routes.
+- PASS: sitemap includes every current canonical URL; robots points to the sitemap and excludes private paths.
+- PASS: live Phone, WhatsApp, email and Instagram actions resolve to the approved values.
+- PASS: Google Analytics and Google Tag Manager are absent by owner choice.
+- PASS: previous image, gallery, contact, Content Studio and responsive regressions remain green.
+
+Known issues / limitations:
+- Google Business Profile/Maps details were not supplied, so local-business profile links are not included.
+- Google Analytics can be added later once the owner supplies a GA4 Measurement ID and requests activation.
+- Contact enquiry delivery remains a local draft until an approved form endpoint is configured.
+
+Items intentionally deferred:
+- Analytics integration, tracking events and consent handling.
+- Google Business Profile and Maps integration until official links are supplied.
+- Final production QA and launch acceptance belong to Phase 13.
+
+Instructions for user review:
+1. Share the homepage or a portfolio album into WhatsApp and inspect the generated preview when available.
+2. Open the live Contact page and test the Phone, WhatsApp, email and Instagram actions.
+3. View page source on Home, Portfolio and an album to confirm canonical, social and structured metadata.
+4. Approve Phase 12 or list metadata, wording or link changes.
+
+User requested changes:
+- Skip Google Analytics for now; it remains disabled and documented as deferred.
 
 User approval:
 PENDING
