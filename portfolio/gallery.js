@@ -1,4 +1,5 @@
 import { publishedPortfolioAlbums } from "../data/portfolio-albums.mjs";
+import { responsivePicture, sourceSetWithBase } from "../data/responsive-images.mjs";
 
 const base = document.body.dataset.base || "../../../";
 const categorySlug = document.body.dataset.categorySlug;
@@ -9,6 +10,10 @@ const dialog = document.querySelector("[data-lightbox]");
 let activeIndex = 0;
 let lastTrigger = null;
 let touchStartX = 0;
+const galleryBatchSize = 18;
+const thumbnailWindowSize = 25;
+let renderedCount = 0;
+let galleryObserver = null;
 
 function renderUnavailable() {
   const main = document.querySelector("main");
@@ -36,10 +41,7 @@ function imageUrl(path) {
 }
 
 function imageSourceSet(srcSet) {
-  return srcSet.split(", ").map((candidate) => {
-    const [path, descriptor] = candidate.split(" ");
-    return `${imageUrl(path)} ${descriptor}`;
-  }).join(", ");
+  return sourceSetWithBase(srcSet, base);
 }
 
 function markImageFailure(image, container) {
@@ -66,11 +68,35 @@ function updateLightbox(index) {
   };
   dialog.querySelector("[data-lightbox-caption]").textContent = photo.caption;
   dialog.querySelector("[data-lightbox-position]").textContent = `${activeIndex + 1} / ${album.photos.length}`;
-  dialog.querySelectorAll("[data-thumbnail-index]").forEach((thumbnail) => {
-    const current = Number(thumbnail.dataset.thumbnailIndex) === activeIndex;
-    thumbnail.setAttribute("aria-current", current ? "true" : "false");
-    if (current) thumbnail.scrollIntoView({ block: "nearest", inline: "center" });
-  });
+  renderThumbnailWindow();
+}
+
+function renderThumbnailWindow() {
+  const container = dialog.querySelector("[data-lightbox-thumbnails]");
+  const radius = Math.floor(thumbnailWindowSize / 2);
+  const start = Math.max(0, Math.min(activeIndex - radius, album.photos.length - thumbnailWindowSize));
+  const end = Math.min(album.photos.length, start + thumbnailWindowSize);
+  const fragment = document.createDocumentFragment();
+  for (let index = start; index < end; index += 1) {
+    const photo = album.photos[index];
+    const thumbnail = document.createElement("button");
+    thumbnail.type = "button";
+    thumbnail.dataset.thumbnailIndex = String(index);
+    thumbnail.setAttribute("aria-label", `View photograph ${index + 1}`);
+    thumbnail.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+    const thumbnailImage = document.createElement("img");
+    thumbnailImage.src = imageUrl(photo.thumbnail || photo.src);
+    thumbnailImage.alt = "";
+    thumbnailImage.width = 96;
+    thumbnailImage.height = 72;
+    thumbnailImage.loading = "lazy";
+    thumbnailImage.decoding = "async";
+    thumbnail.append(thumbnailImage);
+    thumbnail.addEventListener("click", () => updateLightbox(index));
+    fragment.append(thumbnail);
+  }
+  container.replaceChildren(fragment);
+  container.querySelector('[aria-current="true"]')?.scrollIntoView({ block: "nearest", inline: "center" });
 }
 
 function openLightbox(index, trigger) {
@@ -85,27 +111,15 @@ function closeLightbox() {
   if (dialog.open) dialog.close();
 }
 
-function renderGallery() {
-  const fragment = document.createDocumentFragment();
-  const thumbnails = dialog.querySelector("[data-lightbox-thumbnails]");
-  const thumbnailFragment = document.createDocumentFragment();
-
-  album.photos.forEach((photo, index) => {
+function createGalleryFrame(photo, index) {
     const figure = document.createElement("figure");
     figure.className = `gallery-frame gallery-frame--${photo.layout}`;
     const button = document.createElement("button");
     button.className = "gallery-frame__button";
     button.type = "button";
     button.setAttribute("aria-label", `Open photograph ${index + 1} of ${album.photos.length}: ${photo.alt}`);
-    const image = document.createElement("img");
-    image.src = imageUrl(photo.src);
-    image.srcset = imageSourceSet(photo.srcSet);
-    image.sizes = photo.layout === "wide" ? "(min-width: 70rem) 78vw, 100vw" : "(min-width: 48rem) 50vw, 100vw";
-    image.width = photo.width;
-    image.height = photo.height;
-    image.alt = photo.alt;
-    image.loading = index === 0 ? "eager" : "lazy";
-    image.decoding = "async";
+    const sizes = photo.layout === "wide" ? "(min-width: 70rem) 78vw, 100vw" : "(min-width: 48rem) 50vw, 100vw";
+    const { picture, image } = responsivePicture(photo, { base, alt: photo.alt, sizes, loading: index === 0 ? "eager" : "lazy", priority: index === 0 });
     const fallback = document.createElement("span");
     fallback.className = "gallery-frame__fallback";
     fallback.dataset.imageFallback = "";
@@ -115,27 +129,39 @@ function renderGallery() {
     button.addEventListener("click", () => openLightbox(index, button));
     const caption = document.createElement("figcaption");
     caption.textContent = photo.caption;
-    button.append(image, fallback);
+    button.append(picture, fallback);
     figure.append(button, caption);
-    fragment.append(figure);
+    return figure;
+}
 
-    const thumbnail = document.createElement("button");
-    thumbnail.type = "button";
-    thumbnail.dataset.thumbnailIndex = String(index);
-    thumbnail.setAttribute("aria-label", `View photograph ${index + 1}`);
-    const thumbnailImage = document.createElement("img");
-    thumbnailImage.src = imageUrl(photo.src);
-    thumbnailImage.alt = "";
-    thumbnailImage.width = 96;
-    thumbnailImage.height = 72;
-    thumbnailImage.loading = "lazy";
-    thumbnail.append(thumbnailImage);
-    thumbnail.addEventListener("click", () => updateLightbox(index));
-    thumbnailFragment.append(thumbnail);
-  });
+function renderNextGalleryBatch() {
+  const end = Math.min(album.photos.length, renderedCount + galleryBatchSize);
+  const fragment = document.createDocumentFragment();
+  for (let index = renderedCount; index < end; index += 1) fragment.append(createGalleryFrame(album.photos[index], index));
+  gallery.querySelector("[data-gallery-sentinel]")?.before(fragment);
+  renderedCount = end;
+  const more = gallery.querySelector("[data-gallery-more]");
+  if (more) more.hidden = renderedCount >= album.photos.length;
+  if (renderedCount >= album.photos.length) galleryObserver?.disconnect();
+}
 
-  gallery.replaceChildren(fragment);
-  thumbnails.replaceChildren(thumbnailFragment);
+function renderGallery() {
+  const sentinel = document.createElement("div");
+  sentinel.className = "gallery-load-more";
+  sentinel.dataset.gallerySentinel = "";
+  const more = document.createElement("button");
+  more.className = "button button--secondary";
+  more.type = "button";
+  more.dataset.galleryMore = "";
+  more.textContent = "Load more photographs";
+  more.addEventListener("click", renderNextGalleryBatch);
+  sentinel.append(more);
+  gallery.replaceChildren(sentinel);
+  renderNextGalleryBatch();
+  if ("IntersectionObserver" in window && renderedCount < album.photos.length) {
+    galleryObserver = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) renderNextGalleryBatch(); }, { rootMargin: "800px 0px" });
+    galleryObserver.observe(sentinel);
+  }
 }
 
 if (!album || !gallery || !dialog) {

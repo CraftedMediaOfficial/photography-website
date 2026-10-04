@@ -42,13 +42,15 @@ try {
   assert.equal(persisted.testimonials.at(-1).visibility, "draft", "Publishing state must persist.");
   assert.equal(persisted.albums[0].photos[0].src, content.albums[0].photos[0].src, "Photo order must persist.");
 
-  const uploadBody = JSON.stringify({ name: "owner-photo.png", type: "image/png", data: Buffer.from("phase-10-owner-image-fixture").toString("base64") });
+  const ownerImage = await fs.readFile(join(root, "assets/images/gallery/celebration-768.webp"));
+  const uploadBody = JSON.stringify({ name: "owner-photo.webp", type: "image/webp", alt: "Owner-supplied test photograph", data: ownerImage.toString("base64") });
   assert.equal((await fetch(`${base}/api/assets`, { method: "POST", headers: { "Content-Type": "application/json" }, body: uploadBody })).status, 401, "Unauthenticated upload must be rejected.");
   const uploadResponse = await fetch(`${base}/api/assets`, { method: "POST", headers: { ...authorization, "Content-Type": "application/json" }, body: uploadBody });
   assert.equal(uploadResponse.status, 201, "Authenticated supported image upload must succeed.");
   const upload = await uploadResponse.json();
   await fs.access(join(temporaryRoot, upload.path));
-  console.log("Verified Phase 10 token authorization, content CRUD, validation, ordering, visibility, homepage selection, persistence and protected image ingestion.");
+  assert.ok(upload.image.avifSrcSet && upload.image.thumbnail && upload.image.aspectRatio, "Content Studio upload must return optimized responsive metadata.");
+  console.log("Verified Phase 10 token authorization, content CRUD, validation, ordering, visibility, homepage selection, persistence and protected Phase 11 image ingestion.");
 } finally {
   if (server) await new Promise((resolveClose) => server.close(resolveClose));
   await fs.rm(temporaryRoot, { recursive: true, force: true });

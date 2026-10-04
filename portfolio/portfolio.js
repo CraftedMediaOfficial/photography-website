@@ -1,5 +1,6 @@
 import { publishedPortfolioCategories } from "../data/portfolio-data.mjs";
 import { getPublishedAlbumsForCategory } from "../data/portfolio-albums.mjs";
+import { responsivePicture } from "../data/responsive-images.mjs";
 
 const base = document.body.dataset.base || "../";
 const list = document.querySelector("[data-portfolio-list]");
@@ -8,13 +9,8 @@ const slug = document.body.dataset.categorySlug;
 
 function addCover(container, category, detailView = false) {
   if (category.coverImage) {
-    const image = document.createElement("img");
-    image.src = `${base}${category.coverImage}`;
-    image.alt = detailView ? `Editorial cover for ${category.name}` : "";
-    image.width = category.slug === "weddings" ? 1536 : 1122;
-    image.height = category.slug === "weddings" ? 1024 : 1402;
-    image.loading = detailView ? "eager" : "lazy";
-    container.append(image);
+    const { picture } = responsivePicture(category.coverImage, { base, alt: detailView ? `Editorial cover for ${category.name}` : "", sizes: detailView ? "(min-width: 48rem) 50vw, 100vw" : "(min-width: 64rem) 33vw, 100vw", loading: detailView ? "eager" : "lazy", priority: detailView });
+    container.append(picture);
     container.classList.add("has-image");
     return;
   }
@@ -113,12 +109,7 @@ function renderDetail() {
     const card = document.createElement("a");
     card.className = "album-card";
     card.href = `./${album.slug}/`;
-    const image = document.createElement("img");
-    image.src = `${base}${album.coverImage}`;
-    image.alt = "";
-    image.width = 1536;
-    image.height = 1024;
-    image.loading = "lazy";
+    const { picture } = responsivePicture(album.coverImage, { base, alt: "", sizes: "(min-width: 48rem) 50vw, 100vw" });
     const content = document.createElement("span");
     content.className = "album-card__content";
     const meta = document.createElement("span");
@@ -131,7 +122,7 @@ function renderDetail() {
     description.className = "album-card__description";
     description.textContent = album.description;
     content.append(meta, name, description);
-    card.append(image, content);
+    card.append(picture, content);
     albumFragment.append(card);
   });
   albumList.replaceChildren(albumFragment);

@@ -33,7 +33,7 @@ The tradeoff is that the owner needs a local clone, Node.js 20+, and GitHub push
 - Portfolio categories: create, rename, reorder, cover, status.
 - Albums: create, rename, move between categories, reorder, cover, status.
 - Album photos: add by repository path, replace, reorder, remove, captions, alt text, layout and responsive metadata.
-- Images: copy an owner's JPG, PNG, WebP or AVIF (up to 20 MB) into `assets/uploads/`. Phase 11 will add automatic derivatives and compression.
+- Images: ingest an owner's JPG, PNG, WebP or AVIF (up to 20 MB), automatically creating content-hashed WebP/AVIF sizes, a thumbnail and intrinsic metadata. Full-resolution originals remain in the ignored local `_media-originals/` directory and never enter the public build.
 - Films: create, edit, reorder, hide/show, local video paths and approved HTTPS destinations/embeds.
 - Homepage: choose up to three featured portfolio categories.
 - Testimonials: create, edit, reorder and control publishing status.

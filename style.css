@@ -150,8 +150,9 @@ main { min-width: 0; flex: 1; display: grid; }
 
 /* Phase 3 homepage */
 .home-hero { position: relative; min-height: calc(100svh - 5rem); display: grid; align-items: end; overflow: hidden; color: var(--color-white); background: var(--color-peacock-950); }
-.home-hero__image, .home-hero__shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+.home-hero__picture, .home-hero__image, .home-hero__shade { position: absolute; inset: 0; width: 100%; height: 100%; }
 .home-hero__image { object-fit: cover; object-position: 63% center; }
+.responsive-picture { display: block; width: 100%; height: 100%; }
 .home-hero__shade { background: linear-gradient(180deg, rgb(6 47 52 / 12%) 0%, rgb(6 47 52 / 30%) 40%, rgb(6 31 34 / 90%) 100%); }
 .home-hero__content { position: relative; z-index: 1; padding-block: var(--space-9) var(--space-10); }
 .home-hero .eyebrow { color: var(--color-gold-light); }
@@ -291,13 +292,16 @@ main { min-width: 0; flex: 1; display: grid; }
 .portfolio-albums__heading > p { color: var(--color-charcoal-soft); }
 .album-grid { display: grid; gap: var(--space-6); }
 .album-card { display: grid; overflow: hidden; color: var(--color-charcoal); background: var(--color-ivory); text-decoration: none; }
-.album-card > img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; transition: transform var(--transition-slow); }
-.album-card:hover > img { transform: scale(1.02); }
+.album-card > img, .album-card > picture img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; transition: transform var(--transition-slow); }
+.album-card:hover > img, .album-card:hover > picture img { transform: scale(1.02); }
 .album-card__content { display: grid; gap: var(--space-3); padding: var(--space-6); }
 .album-card__meta { color: var(--color-peacock-800); font-size: var(--step--1); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .album-card__title { font-family: var(--font-display); font-size: var(--step-3); line-height: 1.05; }
 .album-card__description { max-width: 60ch; color: var(--color-charcoal-soft); }
 .album-hero, .album-introduction, .album-gallery, .album-return { min-width: 0; }
+.gallery-frame { min-width: 0; }
+.gallery-frame:nth-child(n + 7) { content-visibility: auto; contain-intrinsic-block-size: auto 620px; }
+.gallery-load-more { grid-column: 1 / -1; display: grid; place-items: center; padding: var(--space-7) 0; }
 .album-hero { padding-block: var(--space-9); }
 .album-hero__inner { min-width: 0; display: grid; gap: var(--space-5); }
 .album-hero h1 { max-width: 13ch; }
@@ -507,7 +511,7 @@ main { min-width: 0; flex: 1; display: grid; }
   .portfolio-category-nav a { flex: 0 1 auto; min-height: 3rem; padding-inline: var(--space-4); font-size: .9375rem; }
   .portfolio-albums__heading, .album-introduction__inner { grid-template-columns: 1fr 1fr; align-items: end; }
   .album-card { grid-template-columns: 1.2fr .8fr; align-items: stretch; }
-  .album-card > img { height: 100%; min-height: 28rem; }
+  .album-card > img, .album-card > picture img { height: 100%; min-height: 28rem; }
   .album-card__content { align-content: center; padding: var(--space-8); }
   .album-hero { padding-block: var(--space-10); }
   .gallery-sequence { grid-template-columns: repeat(12, 1fr); gap: var(--space-9) var(--space-5); }

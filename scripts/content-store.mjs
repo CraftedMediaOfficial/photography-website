@@ -58,6 +58,10 @@ export function validateContent(content) {
       requiredText(photo.src, `Photo ${photoIndex + 1} source in ${album.name}`);
       requiredText(photo.alt, `Photo ${photoIndex + 1} alt text in ${album.name}`);
       if (photo.layout && !imageLayouts.has(photo.layout)) throw new Error(`Photo ${photoIndex + 1} layout in ${album.name} is invalid.`);
+      if (album.visibility === "published") {
+        for (const field of ["srcSet", "avifSrcSet", "thumbnail"]) requiredText(photo[field], `Published photo ${photoIndex + 1} ${field} in ${album.name}`);
+        if (!Number.isInteger(photo.width) || !Number.isInteger(photo.height) || photo.width < 1 || photo.height < 1 || !Number.isFinite(photo.aspectRatio)) throw new Error(`Published photo ${photoIndex + 1} intrinsic metadata in ${album.name} is invalid.`);
+      }
     }
     if (!Array.isArray(album.videos)) throw new Error(`Album ${album.name} videos are invalid.`);
   }

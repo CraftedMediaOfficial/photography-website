@@ -26,7 +26,7 @@ async function verify() {
   for (const component of components) if (!css.includes(component)) throw new Error(`Component style ${component} is missing.`);
   if (!css.includes("@media (prefers-reduced-motion: reduce)")) throw new Error("Reduced-motion support is missing.");
   if (!css.includes(":focus-visible")) throw new Error("Visible keyboard focus styling is missing.");
-  for (const mobilePortfolioRule of ["main { min-width: 0", "grid-template-columns: repeat(2, minmax(0, 1fr))", "font-size: 1rem", ".portfolio-category-nav { min-width: 0", ".album-card > img { width: 100%; height: auto", ".album-meta { min-width: 0", "grid-template-columns: minmax(0, 1fr)"]) if (!css.includes(mobilePortfolioRule)) throw new Error(`Mobile portfolio containment rule ${mobilePortfolioRule} is missing.`);
+  for (const mobilePortfolioRule of ["main { min-width: 0", "grid-template-columns: repeat(2, minmax(0, 1fr))", "font-size: 1rem", ".portfolio-category-nav { min-width: 0", ".album-card > img, .album-card > picture img { width: 100%; height: auto", ".album-meta { min-width: 0", "grid-template-columns: minmax(0, 1fr)"]) if (!css.includes(mobilePortfolioRule)) throw new Error(`Mobile portfolio containment rule ${mobilePortfolioRule} is missing.`);
   const home = await fs.readFile(resolve(root, "index.html"), "utf8");
   const homeSections = ["home-hero", "home-intro", "featured-story", "selected-work", "film-teaser", "photographer-teaser", "approach", "kind-words", "social-teaser", "home-cta"];
   for (const section of homeSections) if (!home.includes(section)) throw new Error(`Phase 3 homepage is missing ${section}.`);
@@ -39,7 +39,7 @@ async function verify() {
   const aboutSections = ["about-hero", "about-story", "founder", "philosophy", "style-pillars", "team", "experience"];
   for (const section of aboutSections) if (!about.includes(section)) throw new Error(`Phase 4 About page is missing ${section}.`);
   for (const step of ["Tell us your story", "Let’s talk", "Planning", "Shoot day", "Editing &amp; delivery"]) if (!about.includes(step)) throw new Error(`Phase 4 client experience is missing ${step}.`);
-  for (const asset of ["../data/about.js", "about.js", "../assets/images/photographer-placeholder.webp"]) if (!about.includes(asset)) throw new Error(`Phase 4 About page is missing ${asset}.`);
+  for (const asset of ["../data/about.js", "about.js", "../assets/images/library/photographer-profile-"]) if (!about.includes(asset)) throw new Error(`Phase 4 About page is missing ${asset}.`);
   const aboutData = await fs.readFile(resolve(root, "data/about.js"), "utf8");
   for (const field of ["founder", "team", "name", "role", "description"]) if (!aboutData.includes(field)) throw new Error(`Structured About data is missing ${field}.`);
   const portrait = await fs.stat(resolve(root, "assets/images/photographer-placeholder.webp"));
@@ -64,7 +64,7 @@ async function verify() {
   }
   if (publishedPortfolioAlbums.length !== 1 || publishedPortfolioAlbums[0].slug !== "before-the-celebration") throw new Error("Only the approved Phase 6 demonstration album should be published.");
   const stressAlbum = portfolioAlbums.find((album) => album.slug === "gallery-stress-test");
-  if (!stressAlbum || stressAlbum.photos.length < 30 || stressAlbum.visibility !== "draft") throw new Error("The private 30+ image gallery stress fixture is invalid.");
+  if (!stressAlbum || stressAlbum.photos.length !== 500 || stressAlbum.visibility !== "draft") throw new Error("The private 500-image gallery stress fixture is invalid.");
   for (const slug of ["gallery-stress-test", "hidden-story"]) {
     try { await fs.access(resolve(root, `portfolio/weddings/${slug}/index.html`)); throw new Error(`${slug} must not be publicly generated.`); }
     catch (error) { if (error.code !== "ENOENT") throw error; }
@@ -72,9 +72,9 @@ async function verify() {
   const albumPage = await fs.readFile(resolve(root, "portfolio/weddings/before-the-celebration/index.html"), "utf8");
   for (const marker of ["data-album-slug", "data-gallery", "data-lightbox", "data-lightbox-previous", "data-lightbox-next", "data-lightbox-close", "gallery.js"]) if (!albumPage.includes(marker)) throw new Error(`Generated album page is missing ${marker}.`);
   const galleryScript = await fs.readFile(resolve(root, "portfolio/gallery.js"), "utf8");
-  for (const behavior of ["showModal", "closeLightbox", "ArrowLeft", "ArrowRight", "Escape", "touchstart", "touchend", "loading", "srcset", "imageSourceSet", "markImageFailure", "data-thumbnail-index"]) if (!galleryScript.includes(behavior)) throw new Error(`Gallery behavior ${behavior} is missing.`);
+  for (const behavior of ["showModal", "closeLightbox", "ArrowLeft", "ArrowRight", "Escape", "touchstart", "touchend", "loading", "srcset", "imageSourceSet", "markImageFailure", "thumbnailWindowSize", "renderNextGalleryBatch"]) if (!galleryScript.includes(behavior)) throw new Error(`Gallery behavior ${behavior} is missing.`);
   for (const photo of publishedPortfolioAlbums[0].photos) {
-    if (!photo.srcSet || !photo.width || !photo.height || !photo.alt || !photo.layout) throw new Error(`Gallery photo ${photo.src} lacks responsive or aspect-ratio data.`);
+    if (!photo.srcSet || !photo.avifSrcSet || !photo.thumbnail || !photo.width || !photo.height || !photo.aspectRatio || !photo.alt || !photo.layout) throw new Error(`Gallery photo ${photo.src} lacks responsive or aspect-ratio data.`);
     await fs.access(resolve(root, photo.src));
   }
   for (const image of ["ceremony-details-1536.webp", "courtyard-arrival-1122.webp", "mandap-at-dusk-1536.webp"]) {

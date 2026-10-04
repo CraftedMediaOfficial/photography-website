@@ -1,4 +1,5 @@
 import { publishedFilms } from "../data/films.mjs";
+import { responsivePicture } from "../data/responsive-images.mjs";
 
 const base = document.body.dataset.base || "../";
 const filmList = document.querySelector("[data-film-list]");
@@ -76,15 +77,10 @@ function renderFilms() {
     article.className = "film-card";
     const visual = document.createElement("div");
     visual.className = "film-card__visual";
-    const image = document.createElement("img");
-    image.src = `${base}${film.thumbnail}`;
-    image.alt = "";
-    image.width = film.thumbnail.includes("courtyard") ? 1122 : 1536;
-    image.height = film.thumbnail.includes("courtyard") ? 1402 : 1024;
-    image.loading = index === 0 ? "eager" : "lazy";
+    const { picture } = responsivePicture(film.thumbnail, { base, alt: "", sizes: "(min-width: 64rem) 52vw, 100vw", loading: index === 0 ? "eager" : "lazy", priority: index === 0 });
     const badge = document.createElement("span");
     badge.textContent = film.duration || "Preview pending";
-    visual.append(image, badge);
+    visual.append(picture, badge);
     const content = document.createElement("div");
     content.className = "film-card__content";
     const type = document.createElement("p");
@@ -110,4 +106,3 @@ embedDialog?.querySelector("[data-film-dialog-close]").addEventListener("click",
 embedDialog?.addEventListener("cancel", (event) => { event.preventDefault(); closeEmbed(); });
 embedDialog?.addEventListener("click", (event) => { if (event.target === embedDialog) closeEmbed(); });
 renderFilms();
-

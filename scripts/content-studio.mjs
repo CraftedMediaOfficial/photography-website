@@ -4,6 +4,7 @@ import { promises as fs } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadContent, saveContent } from "./content-store.mjs";
+import { ingestImage } from "./image-pipeline.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const studioRoot = join(projectRoot, "_content-studio");
@@ -56,11 +57,18 @@ export async function startContentStudio({ root = projectRoot, port = 4174, toke
           if (typeof upload.data !== "string" || !/^[A-Za-z0-9+/=]+$/.test(upload.data)) return reply(response, 400, { error: "Image data is invalid." });
           const bytes = Buffer.from(upload.data, "base64");
           if (!bytes.length || bytes.length > 20_000_000) return reply(response, 400, { error: "Image must be between 1 byte and 20 MB." });
-          const directory = join(resolve(root), "assets/uploads");
+          const directory = join(resolve(root), "_media-originals");
           await fs.mkdir(directory, { recursive: true });
           const filename = `${Date.now()}-${slugFileName(upload.name)}${extension}`;
-          await fs.writeFile(join(directory, filename), bytes, { flag: "wx" });
-          return reply(response, 201, { path: `assets/uploads/${filename}` });
+          const original = join(directory, filename);
+          await fs.writeFile(original, bytes, { flag: "wx" });
+          try {
+            const image = await ingestImage(original, { root, slug: slugFileName(upload.name), alt: upload.alt || "" });
+            return reply(response, 201, { path: image.src, image });
+          } catch (error) {
+            await fs.rm(original, { force: true });
+            throw error;
+          }
         }
         return reply(response, 404, { error: "API route not found." });
       }
