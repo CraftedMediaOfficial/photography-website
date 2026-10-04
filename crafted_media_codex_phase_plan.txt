@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 12
+Current Active Phase: PHASE 13
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 11
+Last Approved Phase: PHASE 12
 
 Last Updated By Codex: Codex
 
@@ -119,6 +119,7 @@ Last Update:
 - Phase 10 local, Git-backed Content Studio and architecture approved by the user.
 - Phase 11 responsive image pipeline and 500+ image performance work approved by the user.
 - Phase 12 SEO and social-sharing foundation completed; analytics intentionally deferred per user decision and awaiting review.
+- Phase 12 was approved by the user; Phase 13 final QA, accessibility, security and production launch validation completed and is ready for review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -132,6 +133,7 @@ User Review Notes:
 - User approved Phase 9 and requested Phase 10 implementation.
 - User approved the Phase 10 zero-cost local Content Studio architecture and requested Phase 11.
 - User approved Phase 11 and requested Phase 12; Google Analytics is intentionally deferred for now.
+- User approved Phase 12 and requested Phase 13 final launch validation.
 
 
 ======================================================================
@@ -835,7 +837,7 @@ User compares visual quality vs speed on phone and desktop.
 PHASE 12 — SEO + SOCIAL SHARING + ANALYTICS
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Make Crafted Media discoverable and measurable.
@@ -900,7 +902,7 @@ User verifies Google/social appearance and analytics choice.
 PHASE 13 — FINAL QA + ACCESSIBILITY + SECURITY + PRODUCTION LAUNCH
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Perform complete end-to-end launch validation.
@@ -1059,6 +1061,40 @@ PENDING
 
 Next Phase:
 DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+======================================================================
+PHASE COMPLETION REPORT
+======================================================================
+
+Phase: PHASE 13 — FINAL QA + ACCESSIBILITY + SECURITY + PRODUCTION LAUNCH
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-04
+
+What was implemented:
+- Added a lightweight Crafted Media SVG favicon to every public and generated route.
+- Added final QA automation for all 16 public/error routes: landmarks, language, metadata, content hygiene, secret-pattern safety, accessibility hooks, enquiry abuse controls and private build isolation.
+- Added deployment/recovery instructions covering the GitHub Pages workflow, local checks, rollback and Content Studio boundaries.
+- Rebuilt `dist/`; private `_content-studio/`, `_docs/` and `_media-originals/` remain excluded from the public build.
+
+Tests executed:
+- `npm run build` — PASS.
+- `npm test` (all prior regressions plus Phase 13 QA) — PASS.
+- `npm audit --omit=dev --audit-level=high` — PASS, 0 vulnerabilities.
+- Local HTTP smoke checks — PASS for the built site and representative routes.
+- Playwright browser automation was attempted, but this environment has no installed browser binary; live smoke validation is the deployment gate.
+
+Known limitations:
+- Google Analytics remains intentionally deferred.
+- Enquiry delivery remains local-only until a form endpoint is approved.
+- Google Business Profile/Maps links remain deferred because official URLs were not supplied.
+
+User approval: PENDING
+
+Next Phase:
+No further phase; await full live-site acceptance.
 ------------------------------------------------------------
 
 
@@ -1239,6 +1275,20 @@ Format:
 - Activated the approved phone, WhatsApp, email and normalized Instagram contact links.
 - Kept Google Analytics disabled and documented as deferred until the owner requests integration.
 - Added metadata, structured-data, sitemap, robots, contact-link and analytics-deferral tests.
+- User approval status: PENDING.
+
+[2026-10-04] Phase 12 Approval
+- User approved the SEO, social metadata, sitemap, approved contact links and analytics-deferral work and requested Phase 13.
+- User approval status: APPROVED.
+
+[2026-10-04] Phase 13
+- Added a source-controlled Crafted Media SVG favicon to every public and generated route.
+- Added final launch QA covering all 16 public/error routes, language/main landmarks, metadata, content hygiene, credential-pattern scanning, accessibility hooks, enquiry abuse controls and private build isolation.
+- Added production deployment and recovery instructions, including GitHub Pages rollback guidance and the local-only Content Studio boundary.
+- Rebuilt the production `dist/` output and verified no private `_content-studio/`, `_docs/` or `_media-originals/` content ships publicly.
+- Passed regression, Content Studio, responsive-image, SEO/social, Phase 13 QA and high-severity dependency audit checks; no vulnerabilities reported.
+- Automated browser viewport QA was attempted, but no Playwright browser binary is installed in this environment; live HTTP smoke testing follows deployment.
+- Google Analytics remains intentionally deferred; no tracking or cookies were added.
 - User approval status: PENDING.
 
 ------------------------------------------------------------
@@ -2110,7 +2160,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 12 — SEO + SOCIAL SHARING + ANALYTICS
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-04
 

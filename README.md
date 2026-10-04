@@ -31,3 +31,5 @@ The site publishes canonical URLs, OpenGraph/Twitter sharing metadata, structure
 The included GitHub Actions workflow publishes `dist/` to GitHub Pages when changes are pushed to `main`. In repository settings, set **Pages → Source** to **GitHub Actions** once. A custom domain can be configured in that same Pages settings screen and is independent of this source structure.
 
 No committed keys, tokens, or environment variables are required. GitHub authorization remains the publishing boundary.
+
+See `_docs/deployment-recovery.md` for the production checklist and rollback procedure.

@@ -23,6 +23,7 @@ function categoryPage(category) {
     <meta name="description" content="${escapeHtml(category.description)}" />
     <title>${escapeHtml(category.name)} | Crafted Media Portfolio</title>
     <link rel="canonical" href="${canonical}" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" /><meta property="og:site_name" content="Crafted Media" /><meta property="og:title" content="${escapeHtml(category.name)} | Crafted Media Portfolio" /><meta property="og:description" content="${escapeHtml(category.description)}" /><meta property="og:url" content="${canonical}" /><meta property="og:image" content="${socialImage}" />
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="${escapeHtml(category.name)} | Crafted Media Portfolio" /><meta name="twitter:description" content="${escapeHtml(category.description)}" /><meta name="twitter:image" content="${socialImage}" />
     <script type="application/ld+json">${jsonLd({"@context":"https://schema.org","@type":"CollectionPage",name:category.name,url:canonical,description:category.description,isPartOf:{"@type":"WebSite",name:"Crafted Media",url:siteUrl}})}</script>
@@ -64,6 +65,7 @@ function albumPage(album, category) {
     <meta name="description" content="${escapeHtml(album.description)}" />
     <title>${escapeHtml(album.name)} | Crafted Media</title>
     <link rel="canonical" href="${canonical}" />
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="article" /><meta property="og:site_name" content="Crafted Media" /><meta property="og:title" content="${escapeHtml(album.name)} | Crafted Media" /><meta property="og:description" content="${escapeHtml(album.description)}" /><meta property="og:url" content="${canonical}" /><meta property="og:image" content="${socialImage}" />
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="${escapeHtml(album.name)} | Crafted Media" /><meta name="twitter:description" content="${escapeHtml(album.description)}" /><meta name="twitter:image" content="${socialImage}" />
     <script type="application/ld+json">${jsonLd({"@context":"https://schema.org","@type":"ImageGallery",name:album.name,url:canonical,description:album.description,isPartOf:{"@type":"CollectionPage",name:category.name,url:`${siteUrl}/portfolio/${category.slug}/`}})}</script>
