@@ -98,11 +98,11 @@ Do NOT rewrite git history or delete user work without explicit approval.
 CURRENT PROJECT STATUS
 ======================================================================
 
-Current Active Phase: PHASE 7
+Current Active Phase: PHASE 8
 
 Overall Status: READY FOR USER REVIEW
 
-Last Approved Phase: PHASE 6
+Last Approved Phase: PHASE 7
 
 Last Updated By Codex: Codex
 
@@ -113,7 +113,8 @@ Last Update:
 - Phase 4 About, photographer, team and brand-story experience approved by the user.
 - Phase 5 data-driven portfolio architecture and category experience approved by the user.
 - Phase 6 album architecture, premium gallery experience and mobile corrections approved by the user.
-- Phase 7 films and cinematography experience completed and awaiting user review.
+- Phase 7 films and cinematography experience approved by the user.
+- Phase 8 services, FAQ, location and trust experience completed and awaiting user review.
 
 User Review Notes:
 - User confirmed Phase 1 was completed and requested implementation of Phase 2.
@@ -122,7 +123,8 @@ User Review Notes:
 - User approved Phase 4 and requested Phase 5 implementation and live deployment.
 - User approved Phase 5 and requested Phase 6 implementation and live deployment.
 - User approved Phase 6 and requested Phase 7 implementation and live deployment.
-- Phase 7 must be reviewed on the live website before approval.
+- User approved Phase 7 and requested Phase 8 implementation and live deployment without generating new images.
+- Phase 8 must be reviewed on the live website before approval.
 
 
 ======================================================================
@@ -507,7 +509,7 @@ User reviews photo presentation and gallery usability.
 PHASE 7 — FILMS / CINEMATOGRAPHY EXPERIENCE
 ======================================================================
 
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Goal:
 Give cinematography equal importance without slowing the website.
@@ -557,7 +559,7 @@ User checks cinematography presentation and playback/link behavior.
 PHASE 8 — SERVICES + FAQ + LOCATION + TRUST CONTENT
 ======================================================================
 
-Status: NOT STARTED
+Status: READY FOR USER REVIEW
 
 Goal:
 Explain services clearly without turning the site into a text-heavy brochure.
@@ -1170,6 +1172,18 @@ Format:
 - Film data, playback, link safety, unavailable-media, mobile/desktop browser and production build checks passed.
 - User approval status: PENDING.
 
+[2026-10-04] Phase 7 Approval
+- User approved the live Phase 7 cinematography experience and requested Phase 8 without generated imagery.
+- User approval status: APPROVED.
+
+[2026-10-04] Phase 8
+- Replaced the Services placeholder with a complete image-free photography and cinematography service experience.
+- Added four photography services, four cinematography services, flexible package language, trust content and dedicated pricing/availability CTAs.
+- Added nine native, keyboard-accessible FAQ disclosures covering the required business topics.
+- Added Bengaluru, India and destination availability plus structured planned slugs for future location SEO pages.
+- Mobile/desktop browser, FAQ interaction, CTA, no-overflow, no-new-image and production build checks passed.
+- User approval status: PENDING.
+
 ------------------------------------------------------------
 PHASE COMPLETION REPORT
 ------------------------------------------------------------
@@ -1612,7 +1626,7 @@ PHASE COMPLETION REPORT
 ------------------------------------------------------------
 
 Phase: PHASE 7 — FILMS / CINEMATOGRAPHY EXPERIENCE
-Status: READY FOR USER REVIEW
+Status: APPROVED
 
 Date: 2026-10-03
 
@@ -1677,6 +1691,85 @@ Instructions for user review:
 
 User requested changes:
 - None yet.
+
+User approval:
+APPROVED — user approved Phase 7 and requested Phase 8 implementation without generated imagery.
+
+Next Phase:
+DO NOT START UNTIL USER APPROVAL
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+PHASE COMPLETION REPORT
+------------------------------------------------------------
+
+Phase: PHASE 8 — SERVICES + FAQ + LOCATION + TRUST CONTENT
+Status: READY FOR USER REVIEW
+
+Date: 2026-10-04
+
+What was implemented:
+- Replaced the Services placeholder with a complete, image-free service experience.
+- Added Wedding, Event, Portrait and Commercial Photography services.
+- Added Wedding Films, Event Films, Brand Films and Reels/Social Content services.
+- Added flexible package guidance without inventing prices and included Request Pricing and Check Availability CTAs.
+- Added trust content covering planning clarity, coordinated photography/film language and transparent delivery expectations.
+- Added Bengaluru, India and destination-event availability.
+- Added nine accessible FAQs covering booking lead time, travel, combined coverage, delivery, raw files, edited-image volume, albums, destinations and booking confirmation.
+
+Files added:
+- data/services.mjs
+- services/services.js
+
+Files modified:
+- services/index.html
+- style.css
+- scripts/verify.mjs
+- crafted_media_codex_phase_plan.txt
+
+Architecture/technical decisions:
+- Service groups, FAQ answers, published service areas and planned SEO locations live in structured data.
+- FAQs render as native details/summary controls for keyboard and assistive-technology support.
+- Future Bengaluru, Goa and Coorg landing-page slugs are represented as planned data but are not publicly generated before real SEO content is approved.
+- No prices, turnaround promises or raw-file policies were invented; exact terms remain proposal-specific.
+- No images were generated or added in Phase 8, following the user’s explicit instruction.
+
+Tests executed:
+- Node static verification suite.
+- Production build.
+- Service-count, FAQ-topic, location, planned SEO slug, CTA, native disclosure and focus-style checks.
+- Headless Chromium checks at 320px, 390px and 1280px.
+- FAQ touch/click and keyboard interaction checks.
+
+Test results:
+- PASS: Two service groups and all eight required services render.
+- PASS: Nine required FAQ topics render and native disclosures open by click and keyboard.
+- PASS: Request Pricing and Check Availability link to the existing Contact route.
+- PASS: Bengaluru, India and destination availability is present.
+- PASS: Three future SEO location slugs remain planned and unpublished.
+- PASS: No Phase 8 page imagery was introduced.
+- PASS: Mobile and desktop layouts have no horizontal overflow.
+- PASS: Production build and previous-phase regressions completed successfully.
+
+Known issues / limitations:
+- Exact pricing, delivery timing, booking payment terms and raw-file policy have not been supplied and are intentionally not stated as fixed promises.
+- The Contact route remains a placeholder until Phase 9 implements the approved enquiry and WhatsApp workflow.
+
+Items intentionally deferred:
+- Working enquiry submission, phone, email, Instagram and WhatsApp configuration belong to Phase 9.
+- Public location landing pages require approved local content before publication.
+
+Instructions for user review:
+1. Open the live Services page on phone and desktop.
+2. Review the eight service descriptions and flexible package wording.
+3. Open every FAQ and confirm that the answers match actual business policy.
+4. Confirm the Bengaluru, India and destination-events availability statement.
+5. Approve Phase 8 or list the business wording changes required.
+
+User requested changes:
+- Do not generate any images for Phase 8.
+- Implemented Phase 8 as a typography-led, image-free page.
 
 User approval:
 PENDING

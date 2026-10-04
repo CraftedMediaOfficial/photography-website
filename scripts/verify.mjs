@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 import { portfolioCategories, publishedPortfolioCategories } from "../data/portfolio-data.mjs";
 import { portfolioAlbums, publishedPortfolioAlbums } from "../data/portfolio-albums.mjs";
 import { films, publishedFilms } from "../data/films.mjs";
+import { faqs, plannedLocationPages, serviceAreas, serviceGroups } from "../data/services.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = ["index.html", "about/index.html", "portfolio/index.html", "films/index.html", "services/index.html", "contact/index.html", "404.html"];
 async function verify() {
@@ -98,6 +99,23 @@ async function verify() {
   for (const behavior of ["safeUrl", "allowedExternalHosts", "allowedEmbedHosts", "noopener noreferrer", "target = \"_blank\"", "showModal", "data-video-fallback", "about:blank"]) if (!filmScript.includes(behavior)) throw new Error(`Film behavior ${behavior} is missing.`);
   const video = await fs.stat(resolve(root, "assets/videos/editorial-motion-study.mp4"));
   if (video.size > 2_000_000) throw new Error("Phase 7 motion study exceeds the lightweight video budget.");
-  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 galleries and Phase 7 film data, safe playback/link behavior, no autoplay, lightweight video and unavailable-media fallback.`);
+  const servicesPage = await fs.readFile(resolve(root, "services/index.html"), "utf8");
+  for (const marker of ["services-hero", "data-service-groups", "service-packages", "service-trust", "service-location", "data-faq-list", "Request pricing", "Check availability", "services.js"]) if (!servicesPage.includes(marker)) throw new Error(`Phase 8 Services page is missing ${marker}.`);
+  if (servicesPage.includes("<img")) throw new Error("Phase 8 must not introduce generated imagery.");
+  if (serviceGroups.length !== 2 || serviceGroups.flatMap((group) => group.services).length !== 8) throw new Error("Phase 8 must provide four photography and four cinematography services.");
+  for (const group of serviceGroups) {
+    if (!group.name || !group.introduction || group.services.length !== 4) throw new Error(`Service group ${group.name} is incomplete.`);
+    for (const service of group.services) if (!service.name || !service.description) throw new Error(`A service in ${group.name} is incomplete.`);
+  }
+  const faqText = faqs.map((faq) => `${faq.question} ${faq.answer}`.toLowerCase()).join(" ");
+  for (const topic of ["book", "travel", "photography and cinematography", "delivery", "raw", "how many edited", "albums", "destination", "confirmed"]) if (!faqText.includes(topic)) throw new Error(`FAQ topic ${topic} is missing.`);
+  if (faqs.length !== 9 || faqs.some((faq) => !faq.question || !faq.answer)) throw new Error("Phase 8 FAQ data is incomplete.");
+  if (!serviceAreas.some((area) => area.visibility === "published" && area.name.includes("Bengaluru") && area.name.includes("India") && area.name.includes("Destination"))) throw new Error("Phase 8 service-area statement is missing.");
+  const expectedLocationSlugs = ["bengaluru-wedding-photographer", "goa-wedding-photographer", "coorg-pre-wedding-photographer"];
+  if (JSON.stringify(plannedLocationPages.map((page) => page.slug)) !== JSON.stringify(expectedLocationSlugs) || plannedLocationPages.some((page) => page.visibility !== "planned")) throw new Error("Future SEO location-page architecture is incorrect.");
+  const servicesScript = await fs.readFile(resolve(root, "services/services.js"), "utf8");
+  for (const behavior of ["document.createElement(\"details\")", "document.createElement(\"summary\")", "textContent", "visibility === \"published\""]) if (!servicesScript.includes(behavior)) throw new Error(`Accessible service behavior ${behavior} is missing.`);
+  for (const faqStyle of [".faq-item summary:focus-visible", "min-height: 4rem", ".faq-item[open] summary::after"]) if (!css.includes(faqStyle)) throw new Error(`FAQ accessibility style ${faqStyle} is missing.`);
+  console.log(`Verified ${pages.length} responsive pages, ${expectedCategories.length} portfolio categories, Phase 6 galleries, Phase 7 films and Phase 8 services, nine accessible FAQs, location/SEO structure, CTAs and image-free Phase 8 presentation.`);
 }
 verify().catch((error) => { console.error(error); process.exitCode = 1; });
